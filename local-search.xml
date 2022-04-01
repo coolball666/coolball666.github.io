@@ -38,14 +38,16 @@
     
     <categories>
       
-      <category>-数学</category>
+      <category>数学</category>
       
     </categories>
     
     
     <tags>
       
-      <tag>-数论</tag>
+      <tag>数论</tag>
+      
+      <tag>莫比乌斯反演</tag>
       
     </tags>
     
@@ -122,9 +124,9 @@
     
     <tags>
       
-      <tag>多项式</tag>
-      
       <tag>数论</tag>
+      
+      <tag>多项式</tag>
       
       <tag>扩展欧几里得</tag>
       
