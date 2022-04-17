@@ -16,12 +16,12 @@
   <meta name="author" content="CoolBall">
   <meta name="keywords" content="">
   
-    <meta name="description" content="中国剩余定理和Lagrange插值法引言很巧，高代课讲到了Lagrange插值法，凭着“上课听不明白只好下课自己搞”的意志，我学学证明顺带来写个板子。 前置知识：中国剩余定理（CRT）中国剩余定理是用来求解形如$$\begin{cases}x &amp; \equiv  a_1 (mod \quad m_1) \x &amp; \equiv  a_2 (mod \quad m_2) \&amp;…">
+    <meta name="description" content="中国剩余定理和Lagrange插值法 引言 很巧，高代课讲到了Lagrange插值法，凭着“上课听不明白只好下课自己搞”的意志，我学学证明顺带来写个板子。 前置知识：中国剩余定理（CRT） 中国剩余定理是用来求解形如 \[ \begin{cases} x &amp; \equiv  a_1 (mod \quad m_1) \\ x &amp; \equiv  a_2 (mod \qu">
 <meta property="og:type" content="article">
 <meta property="og:title" content="拉格朗日插值法">
 <meta property="og:url" content="http://coolball666.github.io/2021/10/21/%E6%8B%89%E6%A0%BC%E6%9C%97%E6%97%A5%E6%8F%92%E5%80%BC%E6%B3%95/index.html">
 <meta property="og:site_name" content="CoolBall&#39;s Blog">
-<meta property="og:description" content="中国剩余定理和Lagrange插值法引言很巧，高代课讲到了Lagrange插值法，凭着“上课听不明白只好下课自己搞”的意志，我学学证明顺带来写个板子。 前置知识：中国剩余定理（CRT）中国剩余定理是用来求解形如$$\begin{cases}x &amp; \equiv  a_1 (mod \quad m_1) \x &amp; \equiv  a_2 (mod \quad m_2) \&amp;…">
+<meta property="og:description" content="中国剩余定理和Lagrange插值法 引言 很巧，高代课讲到了Lagrange插值法，凭着“上课听不明白只好下课自己搞”的意志，我学学证明顺带来写个板子。 前置知识：中国剩余定理（CRT） 中国剩余定理是用来求解形如 \[ \begin{cases} x &amp; \equiv  a_1 (mod \quad m_1) \\ x &amp; \equiv  a_2 (mod \qu">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://coolball666.github.io/img/4.jpg">
 <meta property="article:published_time" content="2021-10-21T11:34:41.000Z">
@@ -213,7 +213,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      3.5k 字
+      3.7k 字
     </span>
   
 
@@ -222,7 +222,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      30 分钟
+      31 分钟
     </span>
   
 
@@ -268,37 +268,100 @@
               </p>
             
             <div class="markdown-body">
-              <h1 id="中国剩余定理和Lagrange插值法"><a href="#中国剩余定理和Lagrange插值法" class="headerlink" title="中国剩余定理和Lagrange插值法"></a>中国剩余定理和Lagrange插值法</h1><h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>很巧，高代课讲到了Lagrange插值法，凭着“上课听不明白只好下课自己搞”的意志，我学学证明顺带来写个板子。</p>
-<h2 id="前置知识：中国剩余定理（CRT）"><a href="#前置知识：中国剩余定理（CRT）" class="headerlink" title="前置知识：中国剩余定理（CRT）"></a>前置知识：中国剩余定理（CRT）</h2><p>中国剩余定理是用来求解形如<br>$$<br>\begin{cases}<br>x &amp; \equiv  a_1 (mod \quad m_1) \<br>x &amp; \equiv  a_2 (mod \quad m_2) \<br>&amp;…… \<br>x &amp; \equiv  a_k (mod \quad m_k)<br>\end{cases}<br>$$<br>的线性同余方程组的解的。其中，$\forall i\neq j \quad (a_i, a_j)=1$，我们需要找出最小的非负整数解$x$。</p>
-<h3 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h3><p>设$M=\prod_{i=0}^k m_i$,$M_i=\frac{M}{m_i}$,$M_iT_i \equiv 1(mod \ m_i)$，其中$1\leq i,j \leq n$。</p>
-<p>故可以构造一个解$x=\sum_{i=1}^na_iM_it_i$</p>
-<p>由此，可以求出任意解$x_0=x+k*M$</p>
-<p>**最小正整数解$X$**即为$x_0%M$</p>
-<h3 id="证明"><a href="#证明" class="headerlink" title="证明"></a>证明</h3><p>显然，在第$i$个同余方程里，$a_jM_jt_j \equiv 0(mod \ m_i)$</p>
-<p>$a_iM_it_i \equiv a_i(mod \ m_i)$</p>
-<p>所以$\forall i,X \equiv a_i (mod \ m_i)$，满足题意。</p>
-<h3 id="乘法逆元"><a href="#乘法逆元" class="headerlink" title="乘法逆元"></a>乘法逆元</h3><p>若$a*a^{-1} \equiv 1 (mod \ p)$，则称$a^{-1}$是$a$在$mod \ p$意义下的逆元。</p>
-<p>用扩展欧几里得$(exgcd)$来求解</p>
+              <h1 id="中国剩余定理和lagrange插值法">中国剩余定理和Lagrange插值法</h1>
+<h2 id="引言">引言</h2>
+<p>很巧，高代课讲到了Lagrange插值法，凭着“上课听不明白只好下课自己搞”的意志，我学学证明顺带来写个板子。</p>
+<h2 id="前置知识中国剩余定理crt">前置知识：中国剩余定理（CRT）</h2>
+<p>中国剩余定理是用来求解形如 <span class="math display">\[
+\begin{cases}
+x &amp; \equiv  a_1 (mod \quad m_1) \\
+x &amp; \equiv  a_2 (mod \quad m_2) \\
+&amp;...... \\
+x &amp; \equiv  a_k (mod \quad m_k)
+\end{cases}
+\]</span> 的线性同余方程组的解的。其中，<span class="math inline">\(\forall i\neq j \quad (a_i, a_j)=1\)</span>，我们需要找出最小的非负整数解<span class="math inline">\(x\)</span>。</p>
+<h3 id="解法">解法</h3>
+<p>设<span class="math inline">\(M=\prod_{i=0}^k m_i\)</span>,<span class="math inline">\(M_i=\frac{M}{m_i}\)</span>,<span class="math inline">\(M_iT_i \equiv 1(mod \ m_i)\)</span>，其中<span class="math inline">\(1\leq i,j \leq n\)</span>。</p>
+<p>故可以构造一个解<span class="math inline">\(x=\sum_{i=1}^na_iM_it_i\)</span></p>
+<p>由此，可以求出任意解<span class="math inline">\(x_0=x+k*M\)</span></p>
+<p><strong>最小正整数解<span class="math inline">\(X\)</span></strong>即为<span class="math inline">\(x_0\%M\)</span></p>
+<h3 id="证明">证明</h3>
+<p>显然，在第<span class="math inline">\(i\)</span>个同余方程里，<span class="math inline">\(a_jM_jt_j \equiv 0(mod \ m_i)\)</span></p>
+<p><span class="math inline">\(a_iM_it_i \equiv a_i(mod \ m_i)\)</span></p>
+<p>所以<span class="math inline">\(\forall i,X \equiv a_i (mod \ m_i)\)</span>，满足题意。</p>
+<h3 id="乘法逆元">乘法逆元</h3>
+<p>若<span class="math inline">\(a*a^{-1} \equiv 1 (mod \ p)\)</span>，则称<span class="math inline">\(a^{-1}\)</span>是<span class="math inline">\(a\)</span>在<span class="math inline">\(mod \ p\)</span>意义下的逆元。</p>
+<p>用扩展欧几里得<span class="math inline">\((exgcd)\)</span>来求解</p>
 <p>过程如下：</p>
-<p>$$<br>因为a<em>x+b</em>y=(a, b)\<br>且b*x’+(a%b)<em>y’=(b,a%b)\<br>a%b=a-\lfloor\frac{a}{b}\rfloor</em>b<br>$$</p>
-<p>$$<br>有a<em>y’+b</em>(x’-\lfloor\frac{a}{b}\rfloor<em>y’)=(a,b)\<br>故x=y’,y=(x’-\lfloor\frac{a}{b}\rfloor</em>y’)<br>$$</p>
-<p>显然，$(M_i, m_i)=1$，故令$a=M_i, b=m_i$，则$M_ix+m_iy=1$，故$M_ix=1-m_iy$，可得$x$为$M_i$在$mod\ m_i$下的逆元，即为题设所求。</p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight c++"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c++">ll n, a[maxn], m[maxn], Mi[maxn], M = <span class="hljs-number">1</span>, X;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">exgcd</span><span class="hljs-params">(ll a, ll b, ll &amp;x, ll &amp;y)</span> </span>&#123;<br>    <span class="hljs-keyword">if</span>(b == <span class="hljs-number">0</span>) &#123;x = <span class="hljs-number">1</span>; y = <span class="hljs-number">0</span>; <span class="hljs-keyword">return</span>;&#125;<br>    <span class="hljs-built_in">exgcd</span>(b, a % b, x, y);<br>    ll z = x;<br>    x = y, y = z - y * (a / b);<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">CRT</span><span class="hljs-params">()</span> </span>&#123;<br>    n = <span class="hljs-built_in">read</span>();<br>    <span class="hljs-built_in">rep</span>(i, <span class="hljs-number">1</span>, n) &#123;<br>        m[i] = <span class="hljs-built_in">read</span>(), a[i] = <span class="hljs-built_in">read</span>();<br>        M *= m[i];<br>    &#125;<br>    <span class="hljs-built_in">rep</span>(i, <span class="hljs-number">1</span>, n) &#123;<br>        Mi[i] = M / m[i];<br>        ll x = <span class="hljs-number">0</span>, y = <span class="hljs-number">0</span>;<br>        <span class="hljs-built_in">exgcd</span>(Mi[i], m[i], x, y);<br>        X += a[i] * Mi[i] * (x &lt; <span class="hljs-number">0</span> ? (x + m[i]):x);<br>    &#125;<br>    cout &lt;&lt; X % M &lt;&lt; endl;<br>&#125;<br></code></pre></div></td></tr></table></figure>
-
-<h2 id="正片：Lagrange插值"><a href="#正片：Lagrange插值" class="headerlink" title="正片：Lagrange插值"></a>正片：Lagrange插值</h2><h3 id="多项式储备知识（多项式余数）"><a href="#多项式储备知识（多项式余数）" class="headerlink" title="多项式储备知识（多项式余数）"></a>多项式储备知识（多项式余数）</h3><p>已知多项式<br>$$<br>f(x)\in P[x],f(x)=\sum_{i=0}^{n}a_ix^i<br>$$</p>
-<p>$$<br>故f(x)%(x-\alpha)=\sum_{i=0}^{n}a_i\alpha^i<br>$$</p>
+<p><span class="math display">\[
+因为a*x+b*y=(a, b)\\
+且b*x&#39;+(a\%b)*y&#39;=(b,a\%b)\\
+a\%b=a-\lfloor\frac{a}{b}\rfloor*b
+\]</span></p>
+<p><span class="math display">\[
+有a*y&#39;+b*(x&#39;-\lfloor\frac{a}{b}\rfloor*y&#39;)=(a,b)\\
+故x=y&#39;,y=(x&#39;-\lfloor\frac{a}{b}\rfloor*y&#39;)
+\]</span></p>
+<p>显然，<span class="math inline">\((M_i, m_i)=1\)</span>，故令<span class="math inline">\(a=M_i, b=m_i\)</span>，则<span class="math inline">\(M_ix+m_iy=1\)</span>，故<span class="math inline">\(M_ix=1-m_iy\)</span>，可得<span class="math inline">\(x\)</span>为<span class="math inline">\(M_i\)</span>在<span class="math inline">\(mod\ m_i\)</span>下的逆元，即为题设所求。</p>
+<h3 id="代码">代码</h3>
+<figure class="highlight c++"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c++">ll n, a[maxn], m[maxn], Mi[maxn], M = <span class="hljs-number">1</span>, X;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">exgcd</span><span class="hljs-params">(ll a, ll b, ll &amp;x, ll &amp;y)</span> </span>&#123;<br>    <span class="hljs-keyword">if</span>(b == <span class="hljs-number">0</span>) &#123;x = <span class="hljs-number">1</span>; y = <span class="hljs-number">0</span>; <span class="hljs-keyword">return</span>;&#125;<br>    <span class="hljs-built_in">exgcd</span>(b, a % b, x, y);<br>    ll z = x;<br>    x = y, y = z - y * (a / b);<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">CRT</span><span class="hljs-params">()</span> </span>&#123;<br>    n = <span class="hljs-built_in">read</span>();<br>    <span class="hljs-built_in">rep</span>(i, <span class="hljs-number">1</span>, n) &#123;<br>        m[i] = <span class="hljs-built_in">read</span>(), a[i] = <span class="hljs-built_in">read</span>();<br>        M *= m[i];<br>    &#125;<br>    <span class="hljs-built_in">rep</span>(i, <span class="hljs-number">1</span>, n) &#123;<br>        Mi[i] = M / m[i];<br>        ll x = <span class="hljs-number">0</span>, y = <span class="hljs-number">0</span>;<br>        <span class="hljs-built_in">exgcd</span>(Mi[i], m[i], x, y);<br>        X += a[i] * Mi[i] * (x &lt; <span class="hljs-number">0</span> ? (x + m[i]):x);<br>    &#125;<br>    cout &lt;&lt; X % M &lt;&lt; endl;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+<h2 id="正片lagrange插值">正片：Lagrange插值</h2>
+<h3 id="多项式储备知识多项式余数">多项式储备知识（多项式余数）</h3>
+<p>已知多项式 <span class="math display">\[
+f(x)\in P[x],f(x)=\sum_{i=0}^{n}a_ix^i
+\]</span></p>
+<p><span class="math display">\[
+故f(x)\%(x-\alpha)=\sum_{i=0}^{n}a_i\alpha^i
+\]</span></p>
 <p>下证：</p>
-<p>已知<br>$$<br>f(x)=\sum_{i=0}^{n}a_ix^i \<br>f(x)=\sum_{i=0}^{n}a_ix^i=\sum_{i=0}^{n}(x-\alpha+\alpha)^i=\sum_{i=0}^{n}a_i\sum_{j=0}^{i}{i \choose j}(x-\alpha)^j\alpha^{i-j}<br>$$</p>
-<p>可知，当$j\neq0$时，该子项$p%(x-\alpha)=0$恒成立<br>故余数必为$j=0$的项之和，即<br>$$<br>\begin{aligned}<br>r(x)=\sum_{i=0}^{n}a_i\alpha^i<br>\end{aligned}<br>$$</p>
-<h3 id="模意义下的推导过程"><a href="#模意义下的推导过程" class="headerlink" title="模意义下的推导过程"></a>模意义下的推导过程</h3><p>由上述可以得到一个关于$f(x)$的同余方程组，即<br>$$<br>\begin{cases}<br>f(x) &amp; \equiv  y_1 (mod \ (x-x_1)) \<br>f(x) &amp; \equiv  y_2 (mod \ (x-x_2)) \<br>&amp;…… \<br>f(x) &amp; \equiv  y_n (mod \ (x-x_n))<br>\end{cases}<br>$$<br>根据<strong>中国剩余定理</strong><br>$$<br>\begin{aligned}M=\prod_{i=1}^{n}(x-x_i),M_i=\frac{M}{x-x_i}=\prod_{j\neq i}(x-x_j)\end{aligned}<br>$$<br>得$M_i$在$mod(x-x_i)$意义下的逆元$T_i$为<br>$$<br>\begin{aligned}M_i^{-1}=T_i=\prod_{j\neq i}\frac{1}{x_i-x_j}\end{aligned}<br>$$<br>故有<br>$$<br>\begin{aligned}<br>f(x) \equiv \sum_{i=1}^{n}y_iM_iT_i\equiv \sum_{i=1}^{n}y_i\prod_{j\neq i}M_iT_i\equiv \sum_{i=1}^{n}y_i\prod_{j\neq i}\frac{x-x_i}{x_i-x_j} \quad mod(M)<br>\end{aligned}<br>$$</p>
-<p>又$f(x)$唯一，故<br>$$<br>\begin{aligned}<br>f(x) = \sum_{i=1}^{n}y_i\prod_{j\neq i}\frac{x-x_i}{x_i-x_j}<br>\end{aligned}<br>$$<br>即为Lagrange插值的表达式</p>
-<h3 id="通常意义下的推导过程"><a href="#通常意义下的推导过程" class="headerlink" title="通常意义下的推导过程"></a>通常意义下的推导过程</h3><p>已知$f(x)$过$n$个点$P_1(x_1,y_1),P_2(x_2,y_2),…,P_n(x_n,y_n)$，以及其在$x$轴上的投影$P_i^{‘}(x_i,0)$</p>
-<p>考虑构造$n$个函数$F_i(x)$使得其过点，<br>$$<br>\left{<br>\begin{aligned}<br>&amp; P_j^{‘} \quad j\neq i \<br>&amp; P_i \quad j=i<br>\end{aligned}<br>\right.<br>$$<br>则可知所需函数$f(x)=\sum_{i=1}^{n}F_i(x)$.</p>
-<p>则可设$F_i(x)=a\prod_{j\neq i}(x_i-x_j)$，将$P_i$代入可得$a=\frac{y_i}{\prod_{j\neq i}(x_i-x_j)}$，所以<br>$$<br>\begin{aligned}F_i(x)=y_i\prod_{j\neq i}\frac{x-x_j}{x_i-x_j}\end{aligned}<br>$$<br>由此导出<strong>Lagrange插值在通常意义下的公式</strong>，如下<br>$$<br>\begin{aligned}f(x)=\sum_{i=1}^{n}F_i(x)=\sum_{i=1}^{n}y_i\prod_{j\neq i}\frac{x-x_j}{x_i-x_j}\end{aligned}<br>$$<br>与上述<strong>在模意义下的Lagrange插值公式</strong>相同</p>
-<h2 id="代码实现（对-x-k-时，即需要求-f-k-的值的代码）"><a href="#代码实现（对-x-k-时，即需要求-f-k-的值的代码）" class="headerlink" title="代码实现（对$x=k$时，即需要求$f(k)$的值的代码）"></a>代码实现（对$x=k$时，即需要求$f(k)$的值的代码）</h2><figure class="highlight c++"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c++"><span class="hljs-keyword">const</span> ll p = <span class="hljs-number">998244353</span>;<br>ll n, y[maxn], x[maxn], k;<br>ll ans, s1, s2;<br><br><span class="hljs-function">ll <span class="hljs-title">fastmod</span><span class="hljs-params">(ll a, ll k)</span> </span>&#123;<br>    ll base = <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">while</span>(k) &#123;<br>        <span class="hljs-keyword">if</span>(k &amp; <span class="hljs-number">1</span>) base = base * a % p;<br>        a = a * a % p;<br>        k &gt;&gt;= <span class="hljs-number">1</span>;<br>    &#125;<br>    <span class="hljs-keyword">return</span> base % p;<br>&#125;<br><br><span class="hljs-function">ll <span class="hljs-title">inv</span><span class="hljs-params">(ll x)</span> </span>&#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">fastmod</span>(x, p - <span class="hljs-number">2</span>);<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Lagrange</span><span class="hljs-params">()</span> </span>&#123;<br>    n = <span class="hljs-built_in">read</span>(), k = <span class="hljs-built_in">read</span>();<br>    <span class="hljs-built_in">rep</span>(i, <span class="hljs-number">1</span>, n) &#123;<br>        x[i] = <span class="hljs-built_in">read</span>(), y[i] = <span class="hljs-built_in">read</span>();<br>    &#125;<br>    <span class="hljs-built_in">rep</span>(i, <span class="hljs-number">1</span>, n) &#123;<br>        s1 = y[i] % p;<br>        s2 = <span class="hljs-number">1LL</span>;<br>        <span class="hljs-built_in">rep</span>(j, <span class="hljs-number">1</span>, n) &#123;<br>            <span class="hljs-keyword">if</span>(i != j) &#123;<br>                s1 = s1 * (k - x[j]) % p;<br>                s2 = s2 * (x[i]-x[j]) % p;<br>            &#125;<br>        &#125;<br>        ans += s1 * <span class="hljs-built_in">inv</span>(s2) % p;<br>    &#125;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%lld\n&quot;</span>, (ans % p + p) % p);<br>&#125;<br></code></pre></div></td></tr></table></figure>
-
-
-
+<p>已知 <span class="math display">\[
+f(x)=\sum_{i=0}^{n}a_ix^i \\
+f(x)=\sum_{i=0}^{n}a_ix^i=\sum_{i=0}^{n}(x-\alpha+\alpha)^i=\sum_{i=0}^{n}a_i\sum_{j=0}^{i}{i \choose j}(x-\alpha)^j\alpha^{i-j}
+\]</span></p>
+<p>可知，当<span class="math inline">\(j\neq0\)</span>时，该子项<span class="math inline">\(p\%(x-\alpha)=0\)</span>恒成立 故余数必为<span class="math inline">\(j=0\)</span>的项之和，即 <span class="math display">\[
+\begin{aligned}
+r(x)=\sum_{i=0}^{n}a_i\alpha^i
+\end{aligned}
+\]</span></p>
+<h3 id="模意义下的推导过程">模意义下的推导过程</h3>
+<p>由上述可以得到一个关于<span class="math inline">\(f(x)\)</span>的同余方程组，即 <span class="math display">\[
+\begin{cases}
+f(x) &amp; \equiv  y_1 (mod \ (x-x_1)) \\
+f(x) &amp; \equiv  y_2 (mod \ (x-x_2)) \\
+&amp;...... \\
+f(x) &amp; \equiv  y_n (mod \ (x-x_n))
+\end{cases}
+\]</span> 根据<strong>中国剩余定理</strong> <span class="math display">\[
+\begin{aligned}M=\prod_{i=1}^{n}(x-x_i),M_i=\frac{M}{x-x_i}=\prod_{j\neq i}(x-x_j)\end{aligned}
+\]</span> 得<span class="math inline">\(M_i\)</span>在<span class="math inline">\(mod(x-x_i)\)</span>意义下的逆元<span class="math inline">\(T_i\)</span>为 <span class="math display">\[
+\begin{aligned}M_i^{-1}=T_i=\prod_{j\neq i}\frac{1}{x_i-x_j}\end{aligned}
+\]</span> 故有 <span class="math display">\[
+\begin{aligned}
+f(x) \equiv \sum_{i=1}^{n}y_iM_iT_i\equiv \sum_{i=1}^{n}y_i\prod_{j\neq i}M_iT_i\equiv \sum_{i=1}^{n}y_i\prod_{j\neq i}\frac{x-x_i}{x_i-x_j} \quad mod(M)
+\end{aligned}
+\]</span></p>
+<p>又<span class="math inline">\(f(x)\)</span>唯一，故 <span class="math display">\[
+\begin{aligned}
+f(x) = \sum_{i=1}^{n}y_i\prod_{j\neq i}\frac{x-x_i}{x_i-x_j}
+\end{aligned}
+\]</span> 即为Lagrange插值的表达式</p>
+<h3 id="通常意义下的推导过程">通常意义下的推导过程</h3>
+<p>已知<span class="math inline">\(f(x)\)</span>过<span class="math inline">\(n\)</span>个点<span class="math inline">\(P_1(x_1,y_1),P_2(x_2,y_2),...,P_n(x_n,y_n)\)</span>，以及其在<span class="math inline">\(x\)</span>轴上的投影<span class="math inline">\(P_i^{&#39;}(x_i,0)\)</span></p>
+<p>考虑构造<span class="math inline">\(n\)</span>个函数<span class="math inline">\(F_i(x)\)</span>使得其过点， <span class="math display">\[
+\left\{
+\begin{aligned}
+&amp; P_j^{&#39;} \quad j\neq i \\
+&amp; P_i \quad j=i 
+\end{aligned}
+\right.
+\]</span> 则可知所需函数<span class="math inline">\(f(x)=\sum_{i=1}^{n}F_i(x)\)</span>.</p>
+<p>则可设<span class="math inline">\(F_i(x)=a\prod_{j\neq i}(x_i-x_j)\)</span>，将<span class="math inline">\(P_i\)</span>代入可得<span class="math inline">\(a=\frac{y_i}{\prod_{j\neq i}(x_i-x_j)}\)</span>，所以 <span class="math display">\[
+\begin{aligned}F_i(x)=y_i\prod_{j\neq i}\frac{x-x_j}{x_i-x_j}\end{aligned}
+\]</span> 由此导出<strong>Lagrange插值在通常意义下的公式</strong>，如下 <span class="math display">\[
+\begin{aligned}f(x)=\sum_{i=1}^{n}F_i(x)=\sum_{i=1}^{n}y_i\prod_{j\neq i}\frac{x-x_j}{x_i-x_j}\end{aligned}
+\]</span> 与上述<strong>在模意义下的Lagrange插值公式</strong>相同</p>
+<h2 id="代码实现对xk时即需要求fk的值的代码">代码实现（对<span class="math inline">\(x=k\)</span>时，即需要求<span class="math inline">\(f(k)\)</span>的值的代码）</h2>
+<figure class="highlight c++"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c++"><span class="hljs-keyword">const</span> ll p = <span class="hljs-number">998244353</span>;<br>ll n, y[maxn], x[maxn], k;<br>ll ans, s1, s2;<br><br><span class="hljs-function">ll <span class="hljs-title">fastmod</span><span class="hljs-params">(ll a, ll k)</span> </span>&#123;<br>    ll base = <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">while</span>(k) &#123;<br>        <span class="hljs-keyword">if</span>(k &amp; <span class="hljs-number">1</span>) base = base * a % p;<br>        a = a * a % p;<br>        k &gt;&gt;= <span class="hljs-number">1</span>;<br>    &#125;<br>    <span class="hljs-keyword">return</span> base % p;<br>&#125;<br><br><span class="hljs-function">ll <span class="hljs-title">inv</span><span class="hljs-params">(ll x)</span> </span>&#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">fastmod</span>(x, p - <span class="hljs-number">2</span>);<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Lagrange</span><span class="hljs-params">()</span> </span>&#123;<br>    n = <span class="hljs-built_in">read</span>(), k = <span class="hljs-built_in">read</span>();<br>    <span class="hljs-built_in">rep</span>(i, <span class="hljs-number">1</span>, n) &#123;<br>        x[i] = <span class="hljs-built_in">read</span>(), y[i] = <span class="hljs-built_in">read</span>();<br>    &#125;<br>    <span class="hljs-built_in">rep</span>(i, <span class="hljs-number">1</span>, n) &#123;<br>        s1 = y[i] % p;<br>        s2 = <span class="hljs-number">1LL</span>;<br>        <span class="hljs-built_in">rep</span>(j, <span class="hljs-number">1</span>, n) &#123;<br>            <span class="hljs-keyword">if</span>(i != j) &#123;<br>                s1 = s1 * (k - x[j]) % p;<br>                s2 = s2 * (x[i]-x[j]) % p;<br>            &#125;<br>        &#125;<br>        ans += s1 * <span class="hljs-built_in">inv</span>(s2) % p;<br>    &#125;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%lld\n&quot;</span>, (ans % p + p) % p);<br>&#125;<br></code></pre></div></td></tr></table></figure>
 
             </div>
             <hr>
