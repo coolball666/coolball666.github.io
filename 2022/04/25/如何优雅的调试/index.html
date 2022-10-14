@@ -16,12 +16,12 @@
   <meta name="author" content="CoolBall">
   <meta name="keywords" content="">
   
-    <meta name="description" content="如何优雅的调试 第零步：编译开关 善用\(-Wall\)编译开关，Dev-C++在工具-编译选项-代码生成&#x2F;优化-代码警告-显示最多警告信息(-Wall)选择Yes。\(-Wall\)开关允许编译器输出更多warning信息，包括但不仅限于：不同数据类型之间的比较，if中少了个等号，未使用的变量名，函数返回值错误。 第一步：瞪眼 先根据自己的输出结果推断哪里可能出了问题，再重点检查那部分代">
+    <meta name="description" content="如何优雅的调试第零步：编译开关善用$-Wall$编译开关，Dev-C++在**工具-编译选项-代码生成&#x2F;优化-代码警告-显示最多警告信息(-Wall)**选择Yes。$-Wall$开关允许编译器输出更多warning信息，包括但不仅限于：不同数据类型之间的比较，if中少了个等号，未使用的变量名，函数返回值错误。 第一步：瞪眼先根据自己的输出结果推断哪里可能出了问题，再重点检查那部分代码。 其中一个">
 <meta property="og:type" content="article">
 <meta property="og:title" content="如何优雅的调试">
 <meta property="og:url" content="http://coolball666.github.io/2022/04/25/%E5%A6%82%E4%BD%95%E4%BC%98%E9%9B%85%E7%9A%84%E8%B0%83%E8%AF%95/index.html">
 <meta property="og:site_name" content="CoolBall&#39;s Blog">
-<meta property="og:description" content="如何优雅的调试 第零步：编译开关 善用\(-Wall\)编译开关，Dev-C++在工具-编译选项-代码生成&#x2F;优化-代码警告-显示最多警告信息(-Wall)选择Yes。\(-Wall\)开关允许编译器输出更多warning信息，包括但不仅限于：不同数据类型之间的比较，if中少了个等号，未使用的变量名，函数返回值错误。 第一步：瞪眼 先根据自己的输出结果推断哪里可能出了问题，再重点检查那部分代">
+<meta property="og:description" content="如何优雅的调试第零步：编译开关善用$-Wall$编译开关，Dev-C++在**工具-编译选项-代码生成&#x2F;优化-代码警告-显示最多警告信息(-Wall)**选择Yes。$-Wall$开关允许编译器输出更多warning信息，包括但不仅限于：不同数据类型之间的比较，if中少了个等号，未使用的变量名，函数返回值错误。 第一步：瞪眼先根据自己的输出结果推断哪里可能出了问题，再重点检查那部分代码。 其中一个">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://coolball666.github.io/img/IMG_4373.jpg">
 <meta property="article:published_time" content="2022-04-25T15:33:43.000Z">
@@ -266,120 +266,107 @@
               </p>
             
             <div class="markdown-body">
-              <h1 id="如何优雅的调试">如何优雅的调试</h1>
-<h2 id="第零步编译开关">第零步：编译开关</h2>
-<p>善用<span class="math inline">\(-Wall\)</span>编译开关，Dev-C++在<strong>工具-编译选项-代码生成/优化-代码警告-显示最多警告信息(-Wall)</strong>选择Yes。<span class="math inline">\(-Wall\)</span>开关允许编译器输出更多warning信息，包括但不仅限于：不同数据类型之间的比较，if中少了个等号，未使用的变量名，函数返回值错误。</p>
-<h2 id="第一步瞪眼">第一步：瞪眼</h2>
-<p>先根据自己的输出结果推断哪里可能出了问题，再重点检查那部分代码。</p>
+              <h1 id="如何优雅的调试"><a href="#如何优雅的调试" class="headerlink" title="如何优雅的调试"></a>如何优雅的调试</h1><h2 id="第零步：编译开关"><a href="#第零步：编译开关" class="headerlink" title="第零步：编译开关"></a>第零步：编译开关</h2><p>善用$-Wall$编译开关，Dev-C++在**工具-编译选项-代码生成/优化-代码警告-显示最多警告信息(-Wall)**选择Yes。$-Wall$开关允许编译器输出更多warning信息，包括但不仅限于：不同数据类型之间的比较，if中少了个等号，未使用的变量名，函数返回值错误。</p>
+<h2 id="第一步：瞪眼"><a href="#第一步：瞪眼" class="headerlink" title="第一步：瞪眼"></a>第一步：瞪眼</h2><p>先根据自己的输出结果推断哪里可能出了问题，再重点检查那部分代码。</p>
 <p>其中一个非常有用的方法，就是通过人脑，代入一组输入，来模拟计算机的运行，一个语句一个语句运行下去，然后思考运行到这句语句为止是否有跟我想要实现的不一样的地方。需要特别注意的是，手动模拟代码的时候，应尽可能少的想当然，尽可能一步一步跟着代码走。</p>
 <p>举个例子，在手写链表的时候，如果发现输出和输入正好相反，就是</p>
 <figure class="highlight apache"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs apache"><span class="hljs-attribute">Input</span>: <span class="hljs-number">10</span> <span class="hljs-number">3</span> <span class="hljs-number">7</span> <span class="hljs-number">12</span> <span class="hljs-number">1</span> -<span class="hljs-number">1</span><br><span class="hljs-attribute">Output</span>: <span class="hljs-number">1</span> <span class="hljs-number">12</span> <span class="hljs-number">7</span> <span class="hljs-number">3</span> <span class="hljs-number">10</span><br></code></pre></div></td></tr></table></figure>
+
 <p>那么就应该着重去看有关输出的代码出现了什么问题。</p>
 <p>之后，重要的是学会看编译器的报错信息。以下为一个例子</p>
 <figure class="highlight c++"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c++">camp903.cpp: In function <span class="hljs-string">&#x27;void solve()&#x27;</span>:<br>camp903.cpp:<span class="hljs-number">67</span>:<span class="hljs-number">15</span>: warning: unknown conversion type character <span class="hljs-string">&#x27;l&#x27;</span> in format [-Wformat=]<br>   <span class="hljs-number">67</span> |     <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%lld\n&quot;</span>, ans);<br>      |               ^<br>camp903.cpp:<span class="hljs-number">67</span>:<span class="hljs-number">12</span>: warning: too many arguments <span class="hljs-keyword">for</span> format [-Wformat-extra-args]<br>   <span class="hljs-number">67</span> |     <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%lld\n&quot;</span>, ans);<br></code></pre></div></td></tr></table></figure>
+
 <p>说明了什么？</p>
-<p>在函数<span class="math inline">\(void\  solve()\)</span>里面，代码中的<strong>67</strong>行，对应着printf(“%lld\n", ans);这条语句，出现了一个<span class="math inline">\(warning\)</span>信息，意思是<strong>未知的标识符<span class="math inline">\(l\)</span></strong>.</p>
+<p>在函数$void\  solve()$里面，代码中的<strong>67</strong>行，对应着printf(“%lld\n&quot;, ans);这条语句，出现了一个$warning$信息，意思是<strong>未知的标识符$l$</strong>.</p>
 <p>再举一个例子</p>
 <figure class="highlight c++"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c++">.\camp904.cpp: In function <span class="hljs-string">&#x27;void dfs_lca(int, int)&#x27;</span>:<br>.\camp904.cpp:<span class="hljs-number">87</span>:<span class="hljs-number">16</span>: error: invalid conversion from <span class="hljs-string">&#x27;int (*)[32]&#x27;</span> to <span class="hljs-string">&#x27;int&#x27;</span> [-fpermissive]<br>   <span class="hljs-number">87</span> |     fa[u][<span class="hljs-number">0</span>] = fa;<br>      |                ^~<br>      |                |<br>      |                <span class="hljs-built_in"><span class="hljs-keyword">int</span></span> (*)[<span class="hljs-number">32</span>]<br></code></pre></div></td></tr></table></figure>
-<p>意思就是在函数<span class="math inline">\(void\  dfs\_lca(int, int)\)</span>中，代码中的第<span class="math inline">\(87\)</span>行<span class="math inline">\(16\)</span>列，出现了一个<strong>非法的从<span class="math inline">\(int (*)[32]\)</span>转换到<span class="math inline">\(int\)</span>的错误</strong></p>
+
+<p>意思就是在函数$void\  dfs_lca(int, int)$中，代码中的第$87$行$16$列，出现了一个<strong>非法的从$int (*)[32]$转换到$int$的错误</strong></p>
 <p>为什么会有非法的类型转换？因为这是一个赋值操作，赋值给了一个类型不匹配并且无法强制转换到目标类型的值，所以解决方法就是修改后面的变量。</p>
-<p>总而言之，就是通过编译器给的具体错误定位，包括函数，第几行第几列，以及什么类型的错误，也就是<span class="math inline">\(error:\)</span>后面的英文，翻译懂吧，翻译，来确定错误点，然后修改错误</p>
-<h2 id="第二步静态查错">第二步：静态查错</h2>
-<p>到这，就是编译器无法发现的错误了，也就是所谓的“逻辑错误”。</p>
+<p>总而言之，就是通过编译器给的具体错误定位，包括函数，第几行第几列，以及什么类型的错误，也就是$error:$后面的英文，翻译懂吧，翻译，来确定错误点，然后修改错误</p>
+<h2 id="第二步：静态查错"><a href="#第二步：静态查错" class="headerlink" title="第二步：静态查错"></a>第二步：静态查错</h2><p>到这，就是编译器无法发现的错误了，也就是所谓的“逻辑错误”。</p>
 <p>那什么是静态查错？</p>
-<p>就是在完成的函数中，在某些地方增加<span class="math inline">\(printf\)</span>语句输出变量的值，来观察整个程序运行过程中，变量的值的改变的行为是否符合我们的预期。由于是等待整个程序运行完成后一并查看变量在所有运行流程中的值，相对于动态，也就是程序边运行边查看变量的值，的查错方法，所以称为静态查错。</p>
+<p>就是在完成的函数中，在某些地方增加$printf$语句输出变量的值，来观察整个程序运行过程中，变量的值的改变的行为是否符合我们的预期。由于是等待整个程序运行完成后一并查看变量在所有运行流程中的值，相对于动态，也就是程序边运行边查看变量的值，的查错方法，所以称为静态查错。</p>
 <p>一般而言，输出变量的值的位置，会被添加在<strong>读入用户输入后、某段特定功能代码执行过程中（例如循环里面）和执行后、某个函数执行后</strong>，以此一步步缩小错误点，最终定位到错误发生的位置。</p>
 <p>例如：</p>
 <figure class="highlight c++"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c++"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">290</span>; i &gt;= <span class="hljs-number">175</span>; i--) &#123;<br>    <span class="hljs-keyword">if</span>(v[i].<span class="hljs-built_in">size</span>() == <span class="hljs-number">0</span>) <span class="hljs-keyword">continue</span>;<br>    <span class="hljs-comment">//printf(&quot;%d\n&quot;, v[i].size());</span><br>    <span class="hljs-keyword">if</span>(v[i].<span class="hljs-built_in">size</span>() &lt;= k) ans += v[i].<span class="hljs-built_in">size</span>();<br>    <span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-keyword">int</span> great = <span class="hljs-number">0</span>;<br>        <span class="hljs-built_in">rep</span>(j, <span class="hljs-number">0</span>, v[i].<span class="hljs-built_in">size</span>() - <span class="hljs-number">1</span>) &#123;<br>            <span class="hljs-keyword">if</span>(v[i][j] &gt;= s) great++;<br>        &#125;<br>        <span class="hljs-keyword">if</span>(great + k &gt;= v[i].<span class="hljs-built_in">size</span>()) ans += v[i].<span class="hljs-built_in">size</span>();<br>        <span class="hljs-keyword">else</span> ans += (great + k);<br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
-<p>在这段代码中，我怀疑<span class="math inline">\(v[i].size()\)</span>可能出现了什么问题，我就在每次循环运行的时候让他输出<span class="math inline">\(v[i].size()\)</span>，也就是注释掉的那行代码，观察是否跟我预期的结果一样。倘若<span class="math inline">\(v[i].size()\)</span>不符合预期，就可以往前思考是什么修改了<span class="math inline">\(v[i].size()\)</span>，进而一步步定位错误点。</p>
-<p>当然，输出可以变得更加user-friendly一点，比如也顺带输出<span class="math inline">\(i\)</span>的值，便可以知道是在那一层循环里输出了对应的值。</p>
-<p>也可以多次使用这种方法，就是在程序中添加多个<span class="math inline">\(printf\)</span>语句，来观察某一个部分的运行情况以及程序整体的运行情况。</p>
+
+<p>在这段代码中，我怀疑$v[i].size()$可能出现了什么问题，我就在每次循环运行的时候让他输出$v[i].size()$，也就是注释掉的那行代码，观察是否跟我预期的结果一样。倘若$v[i].size()$不符合预期，就可以往前思考是什么修改了$v[i].size()$，进而一步步定位错误点。</p>
+<p>当然，输出可以变得更加user-friendly一点，比如也顺带输出$i$的值，便可以知道是在那一层循环里输出了对应的值。</p>
+<p>也可以多次使用这种方法，就是在程序中添加多个$printf$语句，来观察某一个部分的运行情况以及程序整体的运行情况。</p>
 <p>到这为止，基本上可以解决99%的问题了，但有些问题是程序整个部分有问题导致的，他每一块都是对的，但加到一起就不对了，或者是一些更加细小的错误，或者是一些运行时错误（即RE）导致的程序异常退出问题，可以借助<strong>GDB</strong>定位错误点。</p>
-<h2 id="第三步gdb">第三步：GDB</h2>
-<p>在此我非常推荐使用Windows的各位安装一个Ubuntu WSL，在Windows应用商店里可以找到。</p>
-<p>因为在Linux下，有些RE是会被输出在控制台的，比如<span class="math inline">\(Segmentation\  fault\)</span>.</p>
+<h2 id="第三步：GDB"><a href="#第三步：GDB" class="headerlink" title="第三步：GDB"></a>第三步：GDB</h2><p>在此我非常推荐使用Windows的各位安装一个Ubuntu WSL，在Windows应用商店里可以找到。</p>
+<p>因为在Linux下，有些RE是会被输出在控制台的，比如$Segmentation\  fault$.</p>
 <p>也可以使用DEV-C++自带的调试器，他也是调用了GDB，但我对这个东西印象非常不好（在NOIP2018的考场上他就没有正常运行起来过！）。使用方法也比较简单，在DEBUG模式下编译，右键行号以添加断点，在下方的“调试”菜单中添加查看变量，在这贴上一篇博客，里面比较详细的介绍了DEV-C++自带的调试器的用法<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41854911/article/details/121719507">Dev C++调试程序方法详解</a></p>
 <p>接下来介绍命令行（终端）下的GDB的简要用法</p>
-<h3 id="第零步配置环境">第零步：配置环境</h3>
-<p>右键“此电脑”-属性-高级系统设置-环境变量-用户变量中双击<strong>Path</strong>打开，点击新建，将g++编译器的文件路径（例如<strong>C:\MinGW\bin</strong>）复制进去，然后一路确定下去。</p>
+<h3 id="第零步：配置环境"><a href="#第零步：配置环境" class="headerlink" title="第零步：配置环境"></a>第零步：配置环境</h3><p>右键“此电脑”-属性-高级系统设置-环境变量-用户变量中双击<strong>Path</strong>打开，点击新建，将g++编译器的文件路径（例如<strong>C:\MinGW\bin</strong>）复制进去，然后一路确定下去。</p>
 <p>在WSL下，输入sudo apt-get install gcc安装gcc和g++环境</p>
-<h3 id="第一步生成文件">第一步：生成文件</h3>
-<p>可以使用DEV-C++编译，也可以在cmd（或者终端）中先<span class="math inline">\(cd\)</span>到<span class="math inline">\(c++\)</span>文件所在路径，比如cd c:\Users\hands\Desktop.</p>
+<h3 id="第一步：生成文件"><a href="#第一步：生成文件" class="headerlink" title="第一步：生成文件"></a>第一步：生成文件</h3><p>可以使用DEV-C++编译，也可以在cmd（或者终端）中先$cd$到$c++$文件所在路径，比如cd c:\Users\hands\Desktop.</p>
 <p>随后输入g++ ./$你的文件名$.cpp -o a -g -Wall -std=c++11</p>
 <p>生成完后，再输入gdb ./a.exe（如果是Ubuntu的话就是gdb ./a)，就可以开始使用GDB了</p>
-<h3 id="第三步熟悉命令">第三步：熟悉命令</h3>
-<p>下面只列出一些用的较多的命令，其他更多功能可以自行搜索（</p>
+<h3 id="第三步：熟悉命令"><a href="#第三步：熟悉命令" class="headerlink" title="第三步：熟悉命令"></a>第三步：熟悉命令</h3><p>下面只列出一些用的较多的命令，其他更多功能可以自行搜索（</p>
 <table>
-<colgroup>
-<col style="width: 13%">
-<col style="width: 12%">
-<col style="width: 74%">
-</colgroup>
 <thead>
-<tr class="header">
+<tr>
 <th>命令</th>
 <th>功能</th>
 <th>使用方法</th>
 </tr>
 </thead>
-<tbody>
-<tr class="odd">
+<tbody><tr>
 <td>r(run)</td>
 <td>运行程序</td>
 <td>直接输入r，表示开始调试</td>
 </tr>
-<tr class="even">
+<tr>
 <td>b(break)</td>
 <td>添加断点</td>
 <td>b 行数，例如“b 100”，在b行让程序停止运行，便于查看变量信息</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>d(delete)</td>
 <td>删除断点</td>
 <td>d 行数，删除该行处已经设置过的断点</td>
 </tr>
-<tr class="even">
+<tr>
 <td>p(print)</td>
 <td>输出变量</td>
 <td>p variable，输出变量variable的值，可以是<strong>结构体，数组，地址</strong>等</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>n(next)</td>
 <td>执行下一行</td>
 <td>直接输入n，执行下一行内容，不管内容多么复杂</td>
 </tr>
-<tr class="even">
+<tr>
 <td>s(step)</td>
 <td>执行下一行</td>
 <td>直接输入s，与上面的区别是如果下一行是函数会进入函数，而不是直接执行完函数</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>c(continue)</td>
 <td>继续</td>
 <td>直接输入c，执行到下一个断点处后停止</td>
 </tr>
-<tr class="even">
+<tr>
 <td>i(info)</td>
 <td>查看信息</td>
 <td>一些常用的subcommand是：info local(查看当前局部变量)，info symbol(查看全局变量，需要加上地址)</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>quit</td>
 <td>退出调试</td>
 <td>退出调试</td>
 </tr>
-</tbody>
-</table>
-<p>需要注意的是，上述命令，是在<strong>非程序要求用户输入</strong>的时候输入的，也就是出现<strong>(gdb)</strong>的时候输入</p>
+</tbody></table>
+<p>需要注意的是，上述命令，是在<strong>非程序要求用户输入</strong>的时候输入的，也就是出现**(gdb)**的时候输入</p>
 <p>当然这只是一些入门用法，GDB完全可以变得更加强大，进阶用法可以在各类博客轻松找到</p>
-<h3 id="第四步自己尝试">第四步：自己尝试</h3>
-<p>自己动手试试，一切就会变得熟悉起来的。</p>
+<h3 id="第四步：自己尝试"><a href="#第四步：自己尝试" class="headerlink" title="第四步：自己尝试"></a>第四步：自己尝试</h3><p>自己动手试试，一切就会变得熟悉起来的。</p>
 <p>命令不是重点，会用，能达成调试的目的就行。</p>
 <p>重要的是观察变量的变化，动态的变化，程序运行过程中的变化，来定位错误点</p>
 <p>如果用不惯GDB也可以转头去用DEV-C++的调试器（</p>
 <p>相比于静态查错，GDB可以帮助我们更好的观察出一些错误，而不用对着所有运行时变量反向推理是哪一步出了什么问题。</p>
-<h2 id="写在最后">写在最后</h2>
-<p>调试是写程序过程中非常非常重要的事情，最好是自己来完成这最后一步，熟练了debug才能更好的理解程序的运行，能力也就提高了。</p>
+<h2 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h2><p>调试是写程序过程中非常非常重要的事情，最好是自己来完成这最后一步，熟练了debug才能更好的理解程序的运行，能力也就提高了。</p>
 <p>比如瞪眼可以帮助理解程序如何运行，进一步厘清自己的思路</p>
 <p>静态可以帮助理解程序内部的联系</p>
 <p>GDB可以观察到更深层次的运行过程</p>
@@ -439,20 +426,20 @@
                   
                 
                 
-  <div id="valine"></div>
+  <div id="waline"></div>
   <script type="text/javascript">
-    Fluid.utils.loadComments('#valine', function() {
-      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', function() {
+    Fluid.utils.loadComments('#waline', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/@waline/client@1/dist/Waline.min.js', function() {
         var options = Object.assign(
-          {"appId":"6zfDMBKQ56bUCGMsjcE8HJJD-MdYXbMMI","appKey":"JA6Tz8tbtPNU4MlDqiSJIhJQ","path":"window.location.pathname","placeholder":"浇浇！","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {"serverURL":"waline-server-ashen-three.vercel.app","path":"window.location.pathname","placeholder":"浇浇！","meta":["nick","mail","link"],"requiredMeta":["nick"],"lang":"zh-CN","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"],"dark":"html[data-user-color-scheme=\"dark\"]","avatar":"retro","avatarCDN":"https://seccdn.libravatar.org/avatar/","avatarForce":false,"wordLimit":0,"pageSize":10,"highlight":true},
           {
-            el: "#valine",
+            el: '#waline',
             path: window.location.pathname
           }
         )
-        new Valine(options);
-        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
-          Fluid.plugins.initFancyBox('#valine .vcontent img:not(.vemoji)');
+        new Waline(options);
+        Fluid.utils.waitElementVisible('#waline .vcontent', () => {
+          Fluid.plugins.initFancyBox('#waline .vcontent img:not(.vemoji)');
         })
       });
     });
