@@ -16,25 +16,25 @@
   <meta name="author" content="CoolBall">
   <meta name="keywords" content="">
   
-    <meta name="description" content="中国剩余定理和Lagrange插值法 引言 很巧，高代课讲到了Lagrange插值法，凭着“上课听不明白只好下课自己搞”的意志，我学学证明顺带来写个板子。 前置知识：中国剩余定理（CRT） 中国剩余定理是用来求解形如 \[ \begin{cases} x &amp; \equiv  a_1 (mod \quad m_1) \\ x &amp; \equiv  a_2 (mod \qu">
+    <meta name="description" content="DDPM Diffusion model Reverse process (reverse from \(X_T\) to \(X_0\)) Starting from \(p(X_T)&#x3D;N(X_T;\textbf{0},\textbf{I})\), which is a standard normal distribution \(p_{\theta}(X_{0:T}):&#x3D;p(X_T">
 <meta property="og:type" content="article">
-<meta property="og:title" content="拉格朗日插值法">
-<meta property="og:url" content="http://coolball666.github.io/2021/10/21/%E6%8B%89%E6%A0%BC%E6%9C%97%E6%97%A5%E6%8F%92%E5%80%BC%E6%B3%95/index.html">
+<meta property="og:title" content="DDPM">
+<meta property="og:url" content="http://coolball666.github.io/2025/09/22/DDPM/index.html">
 <meta property="og:site_name" content="CoolBall&#39;s Blog">
-<meta property="og:description" content="中国剩余定理和Lagrange插值法 引言 很巧，高代课讲到了Lagrange插值法，凭着“上课听不明白只好下课自己搞”的意志，我学学证明顺带来写个板子。 前置知识：中国剩余定理（CRT） 中国剩余定理是用来求解形如 \[ \begin{cases} x &amp; \equiv  a_1 (mod \quad m_1) \\ x &amp; \equiv  a_2 (mod \qu">
+<meta property="og:description" content="DDPM Diffusion model Reverse process (reverse from \(X_T\) to \(X_0\)) Starting from \(p(X_T)&#x3D;N(X_T;\textbf{0},\textbf{I})\), which is a standard normal distribution \(p_{\theta}(X_{0:T}):&#x3D;p(X_T">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://coolball666.github.io/img/4.jpg">
-<meta property="article:published_time" content="2021-10-21T11:34:41.000Z">
-<meta property="article:modified_time" content="2022-01-19T15:24:44.000Z">
+<meta property="og:image" content="http://coolball666.github.io/img/">
+<meta property="article:published_time" content="2025-09-22T05:14:59.000Z">
+<meta property="article:modified_time" content="2025-09-22T05:16:22.280Z">
 <meta property="article:author" content="CoolBall">
-<meta property="article:tag" content="数论">
-<meta property="article:tag" content="多项式">
-<meta property="article:tag" content="扩展欧几里得">
+<meta property="article:tag" content="扩散模型">
+<meta property="article:tag" content="数学">
+<meta property="article:tag" content="概率论">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://coolball666.github.io/img/4.jpg">
+<meta name="twitter:image" content="http://coolball666.github.io/img/">
   
   
-  <title>拉格朗日插值法 - CoolBall&#39;s Blog</title>
+  <title>DDPM - CoolBall&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
@@ -192,7 +192,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="拉格朗日插值法">
+            <span class="h2" id="subtitle" title="DDPM">
               
             </span>
 
@@ -202,8 +202,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-10-21 19:34" pubdate>
-        2021年10月21日 晚上
+      <time datetime="2025-09-22 13:14" pubdate>
+        2025年9月22日 下午
       </time>
     </span>
   
@@ -213,7 +213,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      3.7k 字
+      10k 字
     </span>
   
 
@@ -222,7 +222,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      31 分钟
+      85 分钟
     </span>
   
 
@@ -259,125 +259,242 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">拉格朗日插值法</h1>
+            <h1 style="display: none">DDPM</h1>
             
               <p class="note note-info">
                 
-                  本文最后更新于：2022年1月19日 晚上
+                  本文最后更新于：2025年9月22日 下午
                 
               </p>
             
             <div class="markdown-body">
-              <h1 id="中国剩余定理和lagrange插值法">中国剩余定理和Lagrange插值法</h1>
-<h2 id="引言">引言</h2>
-<p>很巧，高代课讲到了Lagrange插值法，凭着“上课听不明白只好下课自己搞”的意志，我学学证明顺带来写个板子。</p>
-<h2 id="前置知识中国剩余定理crt">前置知识：中国剩余定理（CRT）</h2>
-<p>中国剩余定理是用来求解形如 <span class="math display">\[
+              <h1 id="ddpm">DDPM</h1>
+<h2 id="diffusion-model">Diffusion model</h2>
+<h3 id="reverse-process-reverse-from-x_t-to-x_0">Reverse process
+(reverse from <span class="math inline">\(X_T\)</span> to <span class="math inline">\(X_0\)</span>)</h3>
+<p>Starting from <span class="math inline">\(p(X_T)=N(X_T;\textbf{0},\textbf{I})\)</span>,
+which is a standard normal distribution</p>
+<p><span class="math inline">\(p_{\theta}(X_{0:T}):=p(X_T)\prod_{t=1}^Tp_{\theta}(X_{t-1}|X_t)\)</span>,
+where <span class="math inline">\(p_{\theta}(X_{t-1}|X_t):=N(X_{t-1};\mu_{\theta}(X_t,t),\Sigma_{\theta}(X_t,t))\)</span></p>
+<p>every reverse process is a normal distribution from the previous
+timestep, whose mean and variation is a function of the previous
+timestep</p>
+<h3 id="forward-process-diffusion-process">Forward process (diffusion
+process)</h3>
+<p><span class="math inline">\(q(X_{1:T}|X_0):=\prod_{t=1}^Tq(X_t|X_{t-1})\)</span>,
+where <span class="math inline">\(q(X_t|X_{t-1}):=N(X_t;\sqrt{1-\beta_t}X_{t-1},\beta_t\textbf{I})\)</span></p>
+<p>This process gradually adds gaussian noise to <span class="math inline">\(X_0\)</span> according to <span class="math inline">\(\beta_t\)</span></p>
+<p>Property: closed-form marginal <span class="math display">\[
+q(X_t|X_0)=N(X_t;\sqrt{\bar{\alpha}_t}X_0,(1-\bar{\alpha}_t)\textbf{I})
+\]</span> where <span class="math inline">\(\alpha_t=1-\beta_t,\bar{\alpha}_t=\prod_{s=1}^t\alpha_s\)</span></p>
+<p>Proof: <span class="math display">\[
+q(X_t|X_{t-1})=\sqrt{1-\beta_t}X_{t-1}+\sqrt{\beta_t}\varepsilon=\sqrt{\alpha_t}X_{t-1}+\sqrt{1-\alpha_t}\varepsilon\\
+q(X_t|X_{t-2})=\sqrt{\alpha_t}\sqrt{\alpha_{t-1}}X_{t-2}+\sqrt{1-\alpha_t}\varepsilon+\sqrt{\alpha_t(1-\alpha_{t-1})}\varepsilon\\
+q(X_t|X_0)=\prod_{s=1}^t\sqrt{\alpha_s}X_{0}+V\varepsilon\\
+V^2=\sum_{s=1}^t(1-\alpha_s)\prod_{k=s+1}^t\alpha_k=1-\prod_{s=1}^t\alpha_s
+\]</span></p>
+<p><span class="math inline">\(\square\)</span></p>
+<h3 id="loss-function">Loss function</h3>
+<p>the variational bound of negative log likelihood <span class="math display">\[
+-\text{log}\ p_{\theta}(X_0)=-\text{log}
+\mathbb{E}_{q}\left[\frac{p_{\theta}(X_{0:T})}{q(X_{1:T}|X_0)}\right]\leq\mathbb{E}_{q}\left[-\text{log}
+\frac{p_{\theta}(X_{0:T})}{q(X_{1:T}|X_0)}\right]=\mathbb{E}_{q}\left[-\text{log}\
+p(X_T)-\sum_{t\geq1}\text{log}\frac{p_{\theta}(X_{t-1}|X_t)}{q(X_t|X_{t-1})}\right]:=L
+\]</span> , where the first inequality comes from Jensen inequality, and
+the second equality comes from simply substituting.</p>
+<p>Can be rewritten to <span class="math display">\[
+L=\mathbb{E}_q\left[D_{KL}(q(X_T|X_0)||p(X_T))+\sum_{t&gt;1}D_{KL}(q(X_{t-1}|X_t,X_0)||p_{\theta}(X_{t-1}|X_t))-\text{log}\
+p_{\theta}(X_0|X_1)\right]
+\]</span> , and define <span class="math display">\[
+L_T:=D_{KL}(q(X_T|X_0)||p(X_T))\\
+L_{t-1}:=D_{KL}(q(X_{t-1}|X_t,X_0)||p_{\theta}(X_{t-1}|X_t))\\
+L_0:=-\text{log}\ p_{\theta}(X_0|X_1)
+\]</span> Proof: <span class="math display">\[
+\begin{aligned}
+L&amp;=\mathbb{E}_{q}\left[-\text{log}\
+p(X_T)-\sum_{t\geq1}\text{log}\frac{p_{\theta}(X_{t-1}|X_t)}{q(X_t|X_{t-1})}\right]\\
+&amp;=\mathbb{E}_{q}\left[-\text{log}\
+p(X_T)-\sum_{t&gt;1}\text{log}\frac{p_{\theta}(X_{t-1}|X_t)}{q(X_t|X_{t-1})}-\text{log}\
+\frac{p_{\theta}(X_{0}|X_1)}{q(X_1|X_{0})}\right]\\
+&amp;=\mathbb{E}_{q}\left[-\text{log}\
+p(X_T)-\sum_{t&gt;1}\text{log}\left(\frac{p_{\theta}(X_{t-1}|X_t)}{q(X_{t-1}|X_{t},X_0)}\frac{q(X_{t-1}|X_0)}{q(X_t|X_0)}\right)-\text{log}\
+\frac{p_{\theta}(X_{0}|X_1)}{q(X_1|X_{0})}\right]\\
+&amp;=\mathbb{E}_{q}\left[-\text{log}\
+p(X_T)-\sum_{t&gt;1}\text{log}\frac{p_{\theta}(X_{t-1}|X_t)}{q(X_{t-1}|X_{t},X_0)}-\sum_{t&gt;1}\text{log}\frac{q(X_{t-1}|X_0)}{q(X_t|X_0)}-\text{log}\
+\frac{p_{\theta}(X_{0}|X_1)}{q(X_1|X_{0})}\right]\\
+&amp;=\mathbb{E}_{q}\left[-\text{log}\
+p(X_T)-\sum_{t&gt;1}\text{log}\frac{p_{\theta}(X_{t-1}|X_t)}{q(X_{t-1}|X_{t},X_0)}-\text{log}\frac{q(X_{1}|X_0)}{q(X_T|X_0)}-\text{log}\
+\frac{p_{\theta}(X_{0}|X_1)}{q(X_1|X_{0})}\right]\\
+&amp;=\mathbb{E}_{q}\left[-\text{log}\
+\frac{p(X_T)}{q(X_T|X_0)}-\sum_{t&gt;1}\text{log}\frac{p_{\theta}(X_{t-1}|X_t)}{q(X_{t-1}|X_{t},X_0)}-\text{log}\
+p_{\theta}(X_{0}|X_1)\right]\\
+\end{aligned}
+\]</span> then according to KL divergence's definition, QED</p>
+<p><span class="math inline">\(\square\)</span></p>
+<p>here, <span class="math display">\[
+q(X_{t-1}|X_t,X_0)=N(X_{t-1};\tilde{\mu}_t(X_t,X_0),\tilde{\beta}_t\textbf{I})\\
+\tilde{\mu}_t(X_t,X_0):=\frac{\sqrt{\bar{\alpha}_{t-1}}\beta_t}{1-\bar{\alpha}_t}X_0+\frac{\sqrt{\alpha_t}(1-\bar{\alpha}_{t-1})}{1-\bar{\alpha}_t}X_t,\tilde{\beta}_t:=\frac{1-\bar{\alpha}_{t-1}}{1-\bar{\alpha}_t}\beta_t
+\]</span> Proof: <span class="math display">\[
+q(X_{t-1}|X_t,X_0)=\frac{q(X_{t-1},X_t|X_0)}{q(X_{t}|X_0)}=\frac{q(X_t|X_{t-1},X_0)q(X_{t-1}|X_0)}{q(X_{t}|X_0)}\propto
+q(X_t|X_{t-1},X_0)q(X_{t-1}|X_0)=q(X_t|X_{t-1})q(X_{t-1}|X_0)
+\]</span> Then <span class="math display">\[
+q(X_t|X_{t-1})\sim N(X_t;\sqrt{1-\beta_t}X_{t-1},\beta_t\textbf{I})\\
+q(X_{t-1}|X_0)\sim
+N(X_{t-1};\sqrt{\bar{\alpha}_{t-1}}X_0,(1-\bar{\alpha}_{t-1})\textbf{I})
+\]</span> So <span class="math display">\[
+\text{log}\ q(X_t|X_{t-1})=-\frac{1}{2\beta_t}
+||X_t-\sqrt{\alpha_t}X_{t-1}||^2+c_1\\
+\text{log}\ q(X_{t-1}|X_0)=-\frac{1}{2(1-\bar{\alpha}_{t-1})}
+||X_{t-1}-\sqrt{\bar{\alpha}_{t-1}}X_0||^2+c_2
+\]</span> We can thus get <span class="math display">\[
+\text{log}\ q(X_{t-1}|X_t,X_0)\propto
+\frac{||X_t-\sqrt{\alpha_t}X_{t-1}||^2}{\beta_t}+\frac{||X_{t-1}-\sqrt{\bar{\alpha}_{t-1}}X_0||^2}{1-\bar{\alpha}_{t-1}}\\
+=
+\frac{||X_t||^2+{\alpha_t}||X_{t-1}||^2-2\sqrt{\alpha_t}X_t^\top
+X_{t-1}}{\beta_t}+\frac{||X_{t-1}||^2-2\sqrt{\bar{\alpha}_{t-1}}X_{t-1}^\top
+X_0+\bar{\alpha}_{t-1}||X_0||^2}{1-\bar{\alpha}_{t-1}}
+\]</span> then we can obtain the quadratic term of <span class="math inline">\(||X_{t-1}||^2\)</span> is <span class="math inline">\(\left(\frac{\alpha_t}{\beta_t}+\frac{1}{1-\bar{\alpha}_{t-1}}\right)||X_{t-1}||^2\)</span>,
+and linear term is <span class="math inline">\(-2X_{t-1}^\top\left(\frac{\sqrt{\alpha_t}}{\beta_t}X_t+\frac{\sqrt{\bar{\alpha}_{t-1}}}{1-\bar{\alpha}_{t-1}}X_0\right)\)</span>,
+pdf of this kind is normal distribution</p>
+<p>As a result, <span class="math display">\[
+\tilde{\beta}_t=\left(\frac{\alpha_t}{\beta_t}+\frac{1}{1-\bar{\alpha}_{t-1}}\right)^{-1}=\frac{1-\bar{\alpha}_{t-1}}{1-\bar{\alpha}_t}\beta_t\\
+\tilde{\mu}_t(X_t,X_0)=\tilde{\beta}_t\left(\frac{\sqrt{\alpha_t}}{\beta_t}X_t+\frac{\sqrt{\bar{\alpha}_{t-1}}}{1-\bar{\alpha}_{t-1}}X_0\right)=\frac{\sqrt{\bar{\alpha}_{t-1}}\beta_t}{1-\bar{\alpha}_t}X_0+\frac{\sqrt{\alpha_t}(1-\bar{\alpha}_{t-1})}{1-\bar{\alpha}_t}X_t
+\]</span> <span class="math inline">\(\square\)</span></p>
+<p>Then every KL divergence in L is the KL divergence of 2 Gaussian
+Distribution, so <span class="math inline">\(L\)</span> can be
+calculated in an analytical way instead of MC estimate with high
+variance to improve training performance</p>
+<h2 id="reparameterization-and-simplification">Reparameterization and
+Simplification</h2>
+<h3 id="l_t"><span class="math inline">\(L_T\)</span></h3>
+<p><strong>Fix <span class="math inline">\(\beta_t\)</span> to
+constants</strong>, then <span class="math inline">\(q\)</span> is not
+learnable and <span class="math inline">\(L_T\)</span> is thus a fixed
+constant that can be ignored during training and gradient
+calculation.</p>
+<h3 id="l_1t-1"><span class="math inline">\(L_{1:T-1}\)</span></h3>
+<p>For <span class="math inline">\(p_{\theta}(X_{t-1}|X_t):=N(X_{t-1};\mu_{\theta}(X_t,t),\Sigma_{\theta}(X_t,t))\)</span>,
+set <span class="math inline">\(\Sigma_{\theta}(X_t,t) =
+\sigma_t^2\textbf{I}\)</span> to untrained time dependent constants
+(which is pre-determined before training), Experimentally <span class="math inline">\(\sigma_t^2=\beta_t\)</span> or <span class="math inline">\(\sigma_t^2=\tilde{\beta}_t\)</span> has similar
+results. (These two choice have some reasons, see Section 3.2 in
+paper)</p>
+<p>Then we can rewrite according to the KL divergence of two Gaussian
+r.v. to <span class="math display">\[
+L_{t-1}=D_{KL}(q(X_{t-1}|X_t,X_0)||p_{\theta}(X_{t-1}|X_t))=\mathbb{E}_q\left[\frac{1}{2\sigma_t^2}||\tilde{\mu}_t(X_t,X_0)-\mu_{\theta}(X_t,t)||^2\right]+c_3
+\]</span> where <span class="math inline">\(c_3\)</span> is an constant
+independent of parameters.</p>
+<p>With a further step of reparameterization of <span class="math inline">\(q(X_t|X_0)=N(X_t;\sqrt{\bar{\alpha}_t}X_0,(1-\bar{\alpha}_t)\textbf{I})\)</span>
+as <span class="math display">\[
+X_t(X_0, \varepsilon)=\sqrt{\bar{\alpha}_t}X_0
++\sqrt{1-\bar{\alpha}_t}\varepsilon, \varepsilon\sim N(0,\textbf{I})
+\]</span> then, <span class="math display">\[
+\begin{aligned}
+L_{t-1}-c_3
+&amp;=
+\mathbb{E}_{X_0,\varepsilon}\left[
+\frac{1}{2\sigma_t^2}
+\left\Vert\tilde{\mu}_t\left(X_t(X_0,
+\varepsilon),\frac{1}{\sqrt{\bar{\alpha}_t}}(X_t(X_0,
+\varepsilon)-\sqrt{1-\bar{\alpha}_t}\varepsilon)\right)
+-\mu_{\theta}(X_t(X_0, \varepsilon),t)\right\Vert^2
+\right]\\
+&amp;=
+\mathbb{E}_{X_0,\varepsilon}\left[
+\frac{1}{2\sigma_t^2}
+\left\Vert\frac{1}{\sqrt{\alpha_t}}\left(X_t(X_0,\varepsilon)-\frac{\beta_t}{\sqrt{1-\bar{\alpha}_t}}\varepsilon\right)
+-\mu_{\theta}(X_t(X_0, \varepsilon),t)\right\Vert^2
+\right]\\
+\end{aligned}
+\]</span> So, <span class="math inline">\(\mu_{\theta}(X_t(X_0,
+\varepsilon),t)\)</span> have to predict <span class="math inline">\(\frac{1}{\sqrt{\alpha_t}}\left(X_t(X_0,\varepsilon)-\frac{\beta_t}{\sqrt{1-\bar{\alpha}_t}}\varepsilon\right)\)</span>
+given <span class="math inline">\(X_t\)</span>, which is the input of
+the model during reverse process.</p>
+<p>Thus, we can choose <span class="math display">\[
+\mu_{\theta}(X_t,t)=\frac{1}{\sqrt{\alpha_t}}\left(X_t-\frac{\beta_t}{\sqrt{1-\bar{\alpha}_t}}\varepsilon_{\theta}(X_t,t)\right)
+\]</span> to convert the prediction of <span class="math inline">\(\mu_{\theta}(X_t,t)\)</span> to <span class="math inline">\(\varepsilon_{\theta}(X_t,t)\)</span> from <span class="math inline">\(X_t\)</span></p>
+<p>Then, to sample <span class="math inline">\(X_{t-1}\)</span> from
+<span class="math inline">\(X_t\)</span> is <span class="math display">\[
+X_{t-1}
+=\frac{1}{\sqrt{\alpha_t}}\left(X_t-\frac{\beta_t}{\sqrt{1-\bar{\alpha}_t}}\varepsilon_{\theta}(X_t,t)\right)+\sigma_t\textbf{z},\textbf{z}\sim
+N(0,\textbf{I})
+\]</span></p>
+<p>Furthermore, we can simplify <span class="math display">\[
+\begin{aligned}
+L_{t-1}-c_3
+&amp;=
+\mathbb{E}_{X_0,\varepsilon}\left[
+\frac{1}{2\sigma_t^2}
+\left\Vert\frac{1}{\sqrt{\alpha_t}}\left(X_t-\frac{\beta_t}{\sqrt{1-\bar{\alpha}_t}}\varepsilon\right)
+-\mu_{\theta}(X_t,t)\right\Vert^2
+\right]\\
+&amp;=
+\mathbb{E}_{X_0,\varepsilon}\left[
+\frac{1}{2\sigma_t^2}
+\left\Vert\frac{1}{\sqrt{\alpha_t}}\left(X_t-\frac{\beta_t}{\sqrt{1-\bar{\alpha}_t}}\varepsilon\right)
+-\frac{1}{\sqrt{\alpha_t}}\left(X_t-\frac{\beta_t}{\sqrt{1-\bar{\alpha}_t}}\varepsilon_{\theta}(X_t,t)\right)
+\right\Vert^2
+\right]\\
+&amp;=
+\mathbb{E}_{X_0,\varepsilon}\left[
+\frac{1}{2\sigma_t^2}
+\left\Vert\frac{1}{\sqrt{\alpha_t}}\frac{\beta_t}{\sqrt{1-\bar{\alpha}_t}}\varepsilon
+-\frac{1}{\sqrt{\alpha_t}}\frac{\beta_t}{\sqrt{1-\bar{\alpha}_t}}\varepsilon_{\theta}(X_t,t)
+\right\Vert^2
+\right]\\
+&amp;=
+\mathbb{E}_{X_0,\varepsilon}\left[
+\frac{\beta_t}{2\sigma_t^2\alpha_t(1-\bar{\alpha_t})}
+\left\Vert\varepsilon-\varepsilon_{\theta}(\sqrt{\bar{\alpha}_t}X_0
++\sqrt{1-\bar{\alpha}_t}\varepsilon,t)
+\right\Vert^2
+\right]\\
+\end{aligned}
+\]</span></p>
+<p>So this loss part is actually minimizing the MSE of true noise and
+predicted noise.</p>
+<h3 id="l_0"><span class="math inline">\(L_0\)</span></h3>
+<p>Unlike how <span class="math inline">\(L_{t-1}\)</span> is handled,
+<span class="math inline">\(L_0\)</span> is handled in a special way to
+make the model stabilize in the final reverse process and make the model
+better reconstruct the original image, since it is just a sort of
+discrete pdf of the original data. So the final predicted <span class="math inline">\(\mu_{\theta}(X_1, 1)\)</span> is basically
+noiseless.</p>
+<p>To be specific <span class="math display">\[
+p_{\theta}(X_0|X_1)=\prod_{i=1}^D\int_{\delta_-(x_0^i)}^{\delta_+(x_0^i)}\mathcal{N}(x;\mu_{\theta}^i(X_1,1),\sigma_1^2)dx
+\]</span></p>
+<p><span class="math display">\[
+\delta_{+}(x)=\begin{aligned}
 \begin{cases}
-x &amp; \equiv  a_1 (mod \quad m_1) \\
-x &amp; \equiv  a_2 (mod \quad m_2) \\
-&amp;...... \\
-x &amp; \equiv  a_k (mod \quad m_k)
+\infty &amp;\text{if}\  x=1\\
+x+\frac{1}{255} &amp;\text{if}\  x&lt;1
 \end{cases}
-\]</span> 的线性同余方程组的解的。其中，<span class="math inline">\(\forall i\neq j \quad (a_i,
-a_j)=1\)</span>，我们需要找出最小的非负整数解<span class="math inline">\(x\)</span>。</p>
-<h3 id="解法">解法</h3>
-<p>设<span class="math inline">\(M=\prod_{i=0}^k m_i\)</span>,<span class="math inline">\(M_i=\frac{M}{m_i}\)</span>,<span class="math inline">\(M_iT_i \equiv 1(mod \ m_i)\)</span>，其中<span class="math inline">\(1\leq i,j \leq n\)</span>。</p>
-<p>故可以构造一个解<span class="math inline">\(x=\sum_{i=1}^na_iM_it_i\)</span></p>
-<p>由此，可以求出任意解<span class="math inline">\(x_0=x+k*M\)</span></p>
-<p><strong>最小正整数解<span class="math inline">\(X\)</span></strong>即为<span class="math inline">\(x_0\%M\)</span></p>
-<h3 id="证明">证明</h3>
-<p>显然，在第<span class="math inline">\(i\)</span>个同余方程里，<span class="math inline">\(a_jM_jt_j \equiv 0(mod \ m_i)\)</span></p>
-<p><span class="math inline">\(a_iM_it_i \equiv a_i(mod \
-m_i)\)</span></p>
-<p>所以<span class="math inline">\(\forall i,X \equiv a_i (mod \
-m_i)\)</span>，满足题意。</p>
-<h3 id="乘法逆元">乘法逆元</h3>
-<p>若<span class="math inline">\(a*a^{-1} \equiv 1 (mod \
-p)\)</span>，则称<span class="math inline">\(a^{-1}\)</span>是<span class="math inline">\(a\)</span>在<span class="math inline">\(mod \
-p\)</span>意义下的逆元。</p>
-<p>用扩展欧几里得<span class="math inline">\((exgcd)\)</span>来求解</p>
-<p>过程如下：</p>
-<p><span class="math display">\[
-因为a*x+b*y=(a, b)\\
-且b*x&#39;+(a\%b)*y&#39;=(b,a\%b)\\
-a\%b=a-\lfloor\frac{a}{b}\rfloor*b
-\]</span></p>
-<p><span class="math display">\[
-有a*y&#39;+b*(x&#39;-\lfloor\frac{a}{b}\rfloor*y&#39;)=(a,b)\\
-故x=y&#39;,y=(x&#39;-\lfloor\frac{a}{b}\rfloor*y&#39;)
-\]</span></p>
-<p>显然，<span class="math inline">\((M_i, m_i)=1\)</span>，故令<span class="math inline">\(a=M_i, b=m_i\)</span>，则<span class="math inline">\(M_ix+m_iy=1\)</span>，故<span class="math inline">\(M_ix=1-m_iy\)</span>，可得<span class="math inline">\(x\)</span>为<span class="math inline">\(M_i\)</span>在<span class="math inline">\(mod\
-m_i\)</span>下的逆元，即为题设所求。</p>
-<h3 id="代码">代码</h3>
-<figure class="highlight c++"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c++">ll n, a[maxn], m[maxn], Mi[maxn], M = <span class="hljs-number">1</span>, X;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">exgcd</span><span class="hljs-params">(ll a, ll b, ll &amp;x, ll &amp;y)</span> </span>&#123;<br>    <span class="hljs-keyword">if</span>(b == <span class="hljs-number">0</span>) &#123;x = <span class="hljs-number">1</span>; y = <span class="hljs-number">0</span>; <span class="hljs-keyword">return</span>;&#125;<br>    <span class="hljs-built_in">exgcd</span>(b, a % b, x, y);<br>    ll z = x;<br>    x = y, y = z - y * (a / b);<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">CRT</span><span class="hljs-params">()</span> </span>&#123;<br>    n = <span class="hljs-built_in">read</span>();<br>    <span class="hljs-built_in">rep</span>(i, <span class="hljs-number">1</span>, n) &#123;<br>        m[i] = <span class="hljs-built_in">read</span>(), a[i] = <span class="hljs-built_in">read</span>();<br>        M *= m[i];<br>    &#125;<br>    <span class="hljs-built_in">rep</span>(i, <span class="hljs-number">1</span>, n) &#123;<br>        Mi[i] = M / m[i];<br>        ll x = <span class="hljs-number">0</span>, y = <span class="hljs-number">0</span>;<br>        <span class="hljs-built_in">exgcd</span>(Mi[i], m[i], x, y);<br>        X += a[i] * Mi[i] * (x &lt; <span class="hljs-number">0</span> ? (x + m[i]):x);<br>    &#125;<br>    cout &lt;&lt; X % M &lt;&lt; endl;<br>&#125;<br></code></pre></div></td></tr></table></figure>
-<h2 id="正片lagrange插值">正片：Lagrange插值</h2>
-<h3 id="多项式储备知识多项式余数">多项式储备知识（多项式余数）</h3>
-<p>已知多项式 <span class="math display">\[
-f(x)\in P[x],f(x)=\sum_{i=0}^{n}a_ix^i
-\]</span></p>
-<p><span class="math display">\[
-故f(x)\%(x-\alpha)=\sum_{i=0}^{n}a_i\alpha^i
-\]</span></p>
-<p>下证：</p>
-<p>已知 <span class="math display">\[
-f(x)=\sum_{i=0}^{n}a_ix^i \\
-f(x)=\sum_{i=0}^{n}a_ix^i=\sum_{i=0}^{n}(x-\alpha+\alpha)^i=\sum_{i=0}^{n}a_i\sum_{j=0}^{i}{i
-\choose j}(x-\alpha)^j\alpha^{i-j}
-\]</span></p>
-<p>可知，当<span class="math inline">\(j\neq0\)</span>时，该子项<span class="math inline">\(p\%(x-\alpha)=0\)</span>恒成立 故余数必为<span class="math inline">\(j=0\)</span>的项之和，即 <span class="math display">\[
-\begin{aligned}
-r(x)=\sum_{i=0}^{n}a_i\alpha^i
 \end{aligned}
-\]</span></p>
-<h3 id="模意义下的推导过程">模意义下的推导过程</h3>
-<p>由上述可以得到一个关于<span class="math inline">\(f(x)\)</span>的同余方程组，即 <span class="math display">\[
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \
+\delta_{-}(x)=\begin{aligned}
 \begin{cases}
-f(x) &amp; \equiv  y_1 (mod \ (x-x_1)) \\
-f(x) &amp; \equiv  y_2 (mod \ (x-x_2)) \\
-&amp;...... \\
-f(x) &amp; \equiv  y_n (mod \ (x-x_n))
+-\infty &amp;\text{if}\  x=-1\\
+x-\frac{1}{255} &amp;\text{if}\  x&gt;-1
 \end{cases}
-\]</span> 根据<strong>中国剩余定理</strong> <span class="math display">\[
-\begin{aligned}M=\prod_{i=1}^{n}(x-x_i),M_i=\frac{M}{x-x_i}=\prod_{j\neq
-i}(x-x_j)\end{aligned}
-\]</span> 得<span class="math inline">\(M_i\)</span>在<span class="math inline">\(mod(x-x_i)\)</span>意义下的逆元<span class="math inline">\(T_i\)</span>为 <span class="math display">\[
-\begin{aligned}M_i^{-1}=T_i=\prod_{j\neq
-i}\frac{1}{x_i-x_j}\end{aligned}
-\]</span> 故有 <span class="math display">\[
-\begin{aligned}
-f(x) \equiv \sum_{i=1}^{n}y_iM_iT_i\equiv \sum_{i=1}^{n}y_i\prod_{j\neq
-i}M_iT_i\equiv \sum_{i=1}^{n}y_i\prod_{j\neq i}\frac{x-x_i}{x_i-x_j}
-\quad mod(M)
 \end{aligned}
 \]</span></p>
-<p>又<span class="math inline">\(f(x)\)</span>唯一，故 <span class="math display">\[
-\begin{aligned}
-f(x) = \sum_{i=1}^{n}y_i\prod_{j\neq i}\frac{x-x_i}{x_i-x_j}
-\end{aligned}
-\]</span> 即为Lagrange插值的表达式</p>
-<h3 id="通常意义下的推导过程">通常意义下的推导过程</h3>
-<p>已知<span class="math inline">\(f(x)\)</span>过<span class="math inline">\(n\)</span>个点<span class="math inline">\(P_1(x_1,y_1),P_2(x_2,y_2),...,P_n(x_n,y_n)\)</span>，以及其在<span class="math inline">\(x\)</span>轴上的投影<span class="math inline">\(P_i^{&#39;}(x_i,0)\)</span></p>
-<p>考虑构造<span class="math inline">\(n\)</span>个函数<span class="math inline">\(F_i(x)\)</span>使得其过点， <span class="math display">\[
-\left\{
-\begin{aligned}
-&amp; P_j^{&#39;} \quad j\neq i \\
-&amp; P_i \quad j=i
-\end{aligned}
-\right.
-\]</span> 则可知所需函数<span class="math inline">\(f(x)=\sum_{i=1}^{n}F_i(x)\)</span>.</p>
-<p>则可设<span class="math inline">\(F_i(x)=a\prod_{j\neq
-i}(x_i-x_j)\)</span>，将<span class="math inline">\(P_i\)</span>代入可得<span class="math inline">\(a=\frac{y_i}{\prod_{j\neq
-i}(x_i-x_j)}\)</span>，所以 <span class="math display">\[
-\begin{aligned}F_i(x)=y_i\prod_{j\neq
-i}\frac{x-x_j}{x_i-x_j}\end{aligned}
-\]</span> 由此导出<strong>Lagrange插值在通常意义下的公式</strong>，如下
-<span class="math display">\[
-\begin{aligned}f(x)=\sum_{i=1}^{n}F_i(x)=\sum_{i=1}^{n}y_i\prod_{j\neq
-i}\frac{x-x_j}{x_i-x_j}\end{aligned}
-\]</span> 与上述<strong>在模意义下的Lagrange插值公式</strong>相同</p>
-<h2 id="代码实现对xk时即需要求fk的值的代码">代码实现（对<span class="math inline">\(x=k\)</span>时，即需要求<span class="math inline">\(f(k)\)</span>的值的代码）</h2>
-<figure class="highlight c++"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c++"><span class="hljs-keyword">const</span> ll p = <span class="hljs-number">998244353</span>;<br>ll n, y[maxn], x[maxn], k;<br>ll ans, s1, s2;<br><br><span class="hljs-function">ll <span class="hljs-title">fastmod</span><span class="hljs-params">(ll a, ll k)</span> </span>&#123;<br>    ll base = <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">while</span>(k) &#123;<br>        <span class="hljs-keyword">if</span>(k &amp; <span class="hljs-number">1</span>) base = base * a % p;<br>        a = a * a % p;<br>        k &gt;&gt;= <span class="hljs-number">1</span>;<br>    &#125;<br>    <span class="hljs-keyword">return</span> base % p;<br>&#125;<br><br><span class="hljs-function">ll <span class="hljs-title">inv</span><span class="hljs-params">(ll x)</span> </span>&#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">fastmod</span>(x, p - <span class="hljs-number">2</span>);<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Lagrange</span><span class="hljs-params">()</span> </span>&#123;<br>    n = <span class="hljs-built_in">read</span>(), k = <span class="hljs-built_in">read</span>();<br>    <span class="hljs-built_in">rep</span>(i, <span class="hljs-number">1</span>, n) &#123;<br>        x[i] = <span class="hljs-built_in">read</span>(), y[i] = <span class="hljs-built_in">read</span>();<br>    &#125;<br>    <span class="hljs-built_in">rep</span>(i, <span class="hljs-number">1</span>, n) &#123;<br>        s1 = y[i] % p;<br>        s2 = <span class="hljs-number">1LL</span>;<br>        <span class="hljs-built_in">rep</span>(j, <span class="hljs-number">1</span>, n) &#123;<br>            <span class="hljs-keyword">if</span>(i != j) &#123;<br>                s1 = s1 * (k - x[j]) % p;<br>                s2 = s2 * (x[i]-x[j]) % p;<br>            &#125;<br>        &#125;<br>        ans += s1 * <span class="hljs-built_in">inv</span>(s2) % p;<br>    &#125;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%lld\n&quot;</span>, (ans % p + p) % p);<br>&#125;<br></code></pre></div></td></tr></table></figure>
+<p>here 255 comes from the max num of 8-bit single channel image or
+24-bit 3 channel image</p>
+<h3 id="final-simple-loss-function">Final Simple Loss function</h3>
+<p><span class="math display">\[
+L_{\text{simple}}(\theta):=\mathbb{E}_{t,X_0,\varepsilon}\left[\Vert\varepsilon-\varepsilon_{\theta}(\sqrt{\bar{\alpha}_t}X_0+\sqrt{1-\bar{\alpha}_t}\varepsilon,
+t)\Vert^2\right]
+\]</span></p>
+<p>comes from the final result of <span class="math inline">\(L_{t-1}\)</span>, which is unweighted, and
+combines <span class="math inline">\(L_0\)</span> as a special example
+indicated by <span class="math inline">\(t=1\)</span>, which ignores
+<span class="math inline">\(\sigma_1^2\)</span> and edge effects. <span class="math inline">\(L_T\)</span> is ignored here since it is a
+constant.</p>
+<p>This kind of reweighting actually improves the model's performance,
+since when <span class="math inline">\(t\)</span> is small, the weights
+are down-weighted and force the model to learn small and hard noise
+while when <span class="math inline">\(t\)</span> is large, it focuses
+on large noise.</p>
 
             </div>
             <hr>
@@ -387,7 +504,7 @@ i}\frac{x-x_j}{x_i-x_j}\end{aligned}
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/%E6%95%B0%E5%AD%A6/">数学</a>
+                      <a class="hover-with-bg" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a>
                     
                   </div>
                 
@@ -395,11 +512,11 @@ i}\frac{x-x_j}{x_i-x_j}\end{aligned}
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/%E6%95%B0%E8%AE%BA/">数论</a>
+                      <a class="hover-with-bg" href="/tags/%E6%89%A9%E6%95%A3%E6%A8%A1%E5%9E%8B/">扩散模型</a>
                     
-                      <a class="hover-with-bg" href="/tags/%E5%A4%9A%E9%A1%B9%E5%BC%8F/">多项式</a>
+                      <a class="hover-with-bg" href="/tags/%E6%95%B0%E5%AD%A6/">数学</a>
                     
-                      <a class="hover-with-bg" href="/tags/%E6%89%A9%E5%B1%95%E6%AC%A7%E5%87%A0%E9%87%8C%E5%BE%97/">扩展欧几里得</a>
+                      <a class="hover-with-bg" href="/tags/%E6%A6%82%E7%8E%87%E8%AE%BA/">概率论</a>
                     
                   </div>
                 
@@ -416,9 +533,9 @@ i}\frac{x-x_j}{x_i-x_j}\end{aligned}
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/11/05/DeterminantCalculator/">
+                      <a href="/2050/10/17/%E9%A3%9F%E7%94%A8%E8%AF%B4%E6%98%8E/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">DeterminantCalculator</span>
+                        <span class="hidden-mobile">食用说明</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -426,8 +543,8 @@ i}\frac{x-x_j}{x_i-x_j}\end{aligned}
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/10/17/%E4%BC%AF%E5%8A%AA%E5%88%A9%E6%95%B0/">
-                        <span class="hidden-mobile">伯努利数</span>
+                      <a href="/2022/10/05/%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B0/">
+                        <span class="hidden-mobile">生成函数大杂烩</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

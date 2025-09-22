@@ -16,12 +16,12 @@
   <meta name="author" content="CoolBall">
   <meta name="keywords" content="">
   
-    <meta name="description" content="生成函数大家都知道，生成函数是一类求解数列的方法。基本思想就是把数列${a_n}$作为幂级数$\sum\limits_{n&#x3D;0}^{\infty}a_nx^n\triangleq f(x)$的系数，得到有关$f(x)$的关系式，然后求得$f(x)$的解析表达式，从而再进一步使用幂级数展开求得${a_n}$的表达式的方法。 需要特地指出的是，上述有关级数的收敛问题，都是被一种称为形式收敛的理论系统严">
+    <meta name="description" content="生成函数 大家都知道，生成函数是一类求解数列的方法。基本思想就是把数列\({a_n}\)作为幂级数\(\sum\limits_{n&#x3D;0}^{\infty}a_nx^n\triangleq f(x)\)的系数，得到有关\(f(x)\)的关系式，然后求得\(f(x)\)的解析表达式，从而再进一步使用幂级数展开求得\({a_n}\)的表达式的方法。 需要特地指出的是，上述有关级数的收敛问题，都是被">
 <meta property="og:type" content="article">
 <meta property="og:title" content="生成函数大杂烩">
 <meta property="og:url" content="http://coolball666.github.io/2022/10/05/%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B0/index.html">
 <meta property="og:site_name" content="CoolBall&#39;s Blog">
-<meta property="og:description" content="生成函数大家都知道，生成函数是一类求解数列的方法。基本思想就是把数列${a_n}$作为幂级数$\sum\limits_{n&#x3D;0}^{\infty}a_nx^n\triangleq f(x)$的系数，得到有关$f(x)$的关系式，然后求得$f(x)$的解析表达式，从而再进一步使用幂级数展开求得${a_n}$的表达式的方法。 需要特地指出的是，上述有关级数的收敛问题，都是被一种称为形式收敛的理论系统严">
+<meta property="og:description" content="生成函数 大家都知道，生成函数是一类求解数列的方法。基本思想就是把数列\({a_n}\)作为幂级数\(\sum\limits_{n&#x3D;0}^{\infty}a_nx^n\triangleq f(x)\)的系数，得到有关\(f(x)\)的关系式，然后求得\(f(x)\)的解析表达式，从而再进一步使用幂级数展开求得\({a_n}\)的表达式的方法。 需要特地指出的是，上述有关级数的收敛问题，都是被">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://coolball666.github.io/img/IMG_2417.jpg">
 <meta property="article:published_time" content="2022-10-05T07:48:29.000Z">
@@ -211,7 +211,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      8k 字
+      8.3k 字
     </span>
   
 
@@ -220,7 +220,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      67 分钟
+      70 分钟
     </span>
   
 
@@ -266,74 +266,188 @@
               </p>
             
             <div class="markdown-body">
-              <h1 id="生成函数"><a href="#生成函数" class="headerlink" title="生成函数"></a>生成函数</h1><p>大家都知道，生成函数是一类求解数列的方法。基本思想就是把数列${a_n}$作为幂级数$\sum\limits_{n=0}^{\infty}a_nx^n\triangleq f(x)$的系数，得到有关$f(x)$的关系式，然后求得$f(x)$的解析表达式，从而再进一步使用幂级数展开求得${a_n}$的表达式的方法。</p>
-<p>需要特地指出的是，上述有关级数的收敛问题，都是被一种称为<strong>形式收敛</strong>的理论系统严格解决的。也就是说不考虑$x$的定义域问题。</p>
+              <h1 id="生成函数">生成函数</h1>
+<p>大家都知道，生成函数是一类求解数列的方法。基本思想就是把数列<span class="math inline">\({a_n}\)</span>作为幂级数<span class="math inline">\(\sum\limits_{n=0}^{\infty}a_nx^n\triangleq
+f(x)\)</span>的系数，得到有关<span class="math inline">\(f(x)\)</span>的关系式，然后求得<span class="math inline">\(f(x)\)</span>的解析表达式，从而再进一步使用幂级数展开求得<span class="math inline">\({a_n}\)</span>的表达式的方法。</p>
+<p>需要特地指出的是，上述有关级数的收敛问题，都是被一种称为<strong>形式收敛</strong>的理论系统严格解决的。也就是说不考虑<span class="math inline">\(x\)</span>的定义域问题。</p>
 <p>通常而言，会对递推数列使用生成函数进行求解。</p>
 <p>生产函数通常分为普通生成函数，指数生成函数和狄利克雷生成函数三类，接下来会一一进行讨论。</p>
-<h2 id="普通生成函数"><a href="#普通生成函数" class="headerlink" title="普通生成函数"></a>普通生成函数</h2><p>最一般的生成函数，我们定义<br>$$<br>f(x)=\sum_{n=0}^{\infty}a_nx^n<br>$$<br>在这个定义下，组合数$a_k= {n\choose k}$可以得到一个很好的生成函数$f(x)=(1+x)^n$.</p>
-<p>值得指出的是，${1}$的普通生成函数是$f(x)=\frac{1}{1-x}$</p>
-<h3 id="一些运算性质"><a href="#一些运算性质" class="headerlink" title="一些运算性质"></a>一些运算性质</h3><p>我们设$f(x),g(x)$为${a_n},{b_n}$的普通生成函数</p>
-<h4 id="加法"><a href="#加法" class="headerlink" title="加法"></a>加法</h4><p>显然$f(x)+g(x)$是${a_n+b_n}$的普通生成函数</p>
-<h4 id="乘法（卷积）"><a href="#乘法（卷积）" class="headerlink" title="乘法（卷积）"></a>乘法（卷积）</h4><p>$$<br>f(x)g(x)=(\sum_{n=0}^{\infty}a_nx^n)(\sum_{n=0}^{\infty}b_nx^n)=\sum_{n=0}^{\infty}x^n(\sum_{k=0}^{n}a_kb_{n-k})<br>$$</p>
-<p>从而$f(x)g(x)$是${\sum\limits_{k=0}^{n}a_kb_{n-k}}=a\star b$的生成函数</p>
-<h4 id="数列乘法"><a href="#数列乘法" class="headerlink" title="数列乘法"></a>数列乘法</h4><p>若$P(x)$为一多项式函数，则${P(n)a_n}$的普通生成函数为$P(xD)f$，其中$xD$为$x\frac{d}{dx}$这个运算</p>
-<p>特殊的${na_n}$的普通生成函数为$xDf$</p>
-<h3 id="Catalan数"><a href="#Catalan数" class="headerlink" title="Catalan数"></a>Catalan数</h3><p>Catalan数是一个使用生成函数可以解决的经典例子。因为生成函数的基本思想比较容易理解，所以使用一些例子来熟悉一下。</p>
-<p>先给出Catalan数$C_n$的递推定义<br>$$<br>C_n=\sum_{k=1}^nC_{k-1}C_{n-k}\<br>C_0=1<br>$$<br>所以我们定义$f(x)=\sum\limits_{n=0}^{\infty}C_nx^n$</p>
-<p>从而可以得到<br>$$<br>\begin{aligned}<br>f(x)-C_0&amp;=\sum_{n=1}^{\infty}C_nx^n=\sum_{n=1}^{\infty}(\sum_{k=1}^{n}C_{k-1}C_{n-k})x^n=\sum_{k=1}^{\infty}\sum_{n=k}^{\infty}C_{k-1}C_{n-k}x^n\<br>&amp;=\sum_{k=1}^{\infty}C_{k-1}x^k\sum_{n=k}^{\infty}C_{n-k}x^{n-k}=xf^2(x)<br>\end{aligned}<br>$$<br>所以我们得到$xf^2(x)-f(x)+1=0$，从而$f(x)=\frac{1\pm\sqrt{1-4x}}{2x}$，又$f(x)=C_0=0$，所以取负号</p>
-<p>得到<br>$$<br>f(x)=\frac{1-\sqrt{1-4x}}{2x}=\frac{1-\sum\limits_{n=0}^{\infty}{\frac{1}{2} \choose n}(-4)^nx^n}{2x}=-\frac{1}{2}\sum_{n=1}^{\infty}{\frac{1}{2} \choose n}(-4)^nx^{n-1}=-\frac{1}{2}\sum_{n=0}^{\infty}{\frac{1}{2} \choose n+1}(-4)^{n+1}x^n<br>$$</p>
-<p>从而可知<br>$$<br>C_n=-\frac{1}{2}{\frac{1}{2} \choose n+1}(-4)^{n+1}=-\frac{1}{2}\frac{(-1)^n(2n)!!}{2^{n}(n+1)!}(-4)^{n+1}=\frac{2n \choose n}{n+1}\<br>$$</p>
-<p>从上面的例子，我们可以看出使用普通生成函数求解数列的一般方法。这个方法是容易理解的，只是如何使用正确的变换来得到关于$f(x)$的关系是需要一定技巧的，也是有一定难度的。</p>
+<h2 id="普通生成函数">普通生成函数</h2>
+<p>最一般的生成函数，我们定义 <span class="math display">\[
+f(x)=\sum_{n=0}^{\infty}a_nx^n
+\]</span> 在这个定义下，组合数<span class="math inline">\(a_k= {n\choose
+k}\)</span>可以得到一个很好的生成函数<span class="math inline">\(f(x)=(1+x)^n\)</span>.</p>
+<p>值得指出的是，<span class="math inline">\(\{1\}\)</span>的普通生成函数是<span class="math inline">\(f(x)=\frac{1}{1-x}\)</span></p>
+<h3 id="一些运算性质">一些运算性质</h3>
+<p>我们设<span class="math inline">\(f(x),g(x)\)</span>为<span class="math inline">\(\{a_n\},\{b_n\}\)</span>的普通生成函数</p>
+<h4 id="加法">加法</h4>
+<p>显然<span class="math inline">\(f(x)+g(x)\)</span>是<span class="math inline">\(\{a_n+b_n\}\)</span>的普通生成函数</p>
+<h4 id="乘法卷积">乘法（卷积）</h4>
+<p><span class="math display">\[
+f(x)g(x)=(\sum_{n=0}^{\infty}a_nx^n)(\sum_{n=0}^{\infty}b_nx^n)=\sum_{n=0}^{\infty}x^n(\sum_{k=0}^{n}a_kb_{n-k})
+\]</span></p>
+<p>从而<span class="math inline">\(f(x)g(x)\)</span>是<span class="math inline">\(\{\sum\limits_{k=0}^{n}a_kb_{n-k}\}=a\star
+b\)</span>的生成函数</p>
+<h4 id="数列乘法">数列乘法</h4>
+<p>若<span class="math inline">\(P(x)\)</span>为一多项式函数，则<span class="math inline">\({P(n)a_n}\)</span>的普通生成函数为<span class="math inline">\(P(xD)f\)</span>，其中<span class="math inline">\(xD\)</span>为<span class="math inline">\(x\frac{d}{dx}\)</span>这个运算</p>
+<p>特殊的<span class="math inline">\({na_n}\)</span>的普通生成函数为<span class="math inline">\(xDf\)</span></p>
+<h3 id="catalan数">Catalan数</h3>
+<p>Catalan数是一个使用生成函数可以解决的经典例子。因为生成函数的基本思想比较容易理解，所以使用一些例子来熟悉一下。</p>
+<p>先给出Catalan数<span class="math inline">\(C_n\)</span>的递推定义
+<span class="math display">\[
+C_n=\sum_{k=1}^nC_{k-1}C_{n-k}\\
+C_0=1
+\]</span> 所以我们定义<span class="math inline">\(f(x)=\sum\limits_{n=0}^{\infty}C_nx^n\)</span></p>
+<p>从而可以得到 <span class="math display">\[
+\begin{aligned}
+f(x)-C_0&amp;=\sum_{n=1}^{\infty}C_nx^n=\sum_{n=1}^{\infty}(\sum_{k=1}^{n}C_{k-1}C_{n-k})x^n=\sum_{k=1}^{\infty}\sum_{n=k}^{\infty}C_{k-1}C_{n-k}x^n\\
+&amp;=\sum_{k=1}^{\infty}C_{k-1}x^k\sum_{n=k}^{\infty}C_{n-k}x^{n-k}=xf^2(x)
+\end{aligned}
+\]</span> 所以我们得到<span class="math inline">\(xf^2(x)-f(x)+1=0\)</span>，从而<span class="math inline">\(f(x)=\frac{1\pm\sqrt{1-4x}}{2x}\)</span>，又<span class="math inline">\(f(x)=C_0=0\)</span>，所以取负号</p>
+<p>得到 <span class="math display">\[
+f(x)=\frac{1-\sqrt{1-4x}}{2x}=\frac{1-\sum\limits_{n=0}^{\infty}{\frac{1}{2}
+\choose n}(-4)^nx^n}{2x}=-\frac{1}{2}\sum_{n=1}^{\infty}{\frac{1}{2}
+\choose n}(-4)^nx^{n-1}=-\frac{1}{2}\sum_{n=0}^{\infty}{\frac{1}{2}
+\choose n+1}(-4)^{n+1}x^n
+\]</span></p>
+<p>从而可知 <span class="math display">\[
+C_n=-\frac{1}{2}{\frac{1}{2} \choose
+n+1}(-4)^{n+1}=-\frac{1}{2}\frac{(-1)^n(2n)!!}{2^{n}(n+1)!}(-4)^{n+1}=\frac{2n
+\choose n}{n+1}\\
+\]</span></p>
+<p>从上面的例子，我们可以看出使用普通生成函数求解数列的一般方法。这个方法是容易理解的，只是如何使用正确的变换来得到关于<span class="math inline">\(f(x)\)</span>的关系是需要一定技巧的，也是有一定难度的。</p>
 <p>正如在前面提到的，组合数的生成函数十分的优美简洁，所以普通生成函数跟<strong>组合</strong>类的计数问题有密不可分的联系。下面介绍一类经典的使用普通生成函数计数的组合类型的问题。</p>
-<h3 id="典中典1"><a href="#典中典1" class="headerlink" title="典中典1"></a>典中典1</h3><p>给出一个命题：</p>
-<p><strong>从$n$元集$S={S_1,S_2,\cdots,S_n}$中选取$k$个元的组合数为$a_k$，其中要求$S_i$出现的次数集为$M_i(1\leq i\leq n)$，则${a_k}$的生成函数$\sum\limits_{k=0}^{\infty}a_kx^k=\prod\limits_{i=1}^{n}\sum\limits_{m\in M_i}x^m$</strong></p>
-<p>证明：考虑等式右边$\prod\limits_{i=1}^{n}\sum\limits_{m\in M_i}x^m$的展开式中$x^{m_1}x^{m_2}\cdots x^{m_n}=x^{m_1+m_2+\cdots +m_n}$项的系数，可以看出$x^k$前面的系数即为$m_1+m_2+\cdots +m_n=k$的解的个数，其中$m_i\in M_i$</p>
+<h3 id="典中典1">典中典1</h3>
+<p>给出一个命题：</p>
+<p><strong>从<span class="math inline">\(n\)</span>元集<span class="math inline">\(S=\{S_1,S_2,\cdots,S_n\}\)</span>中选取<span class="math inline">\(k\)</span>个元的组合数为<span class="math inline">\(a_k\)</span>，其中要求<span class="math inline">\(S_i\)</span>出现的次数集为<span class="math inline">\(M_i(1\leq i\leq n)\)</span>，则<span class="math inline">\(\{a_k\}\)</span>的生成函数<span class="math inline">\(\sum\limits_{k=0}^{\infty}a_kx^k=\prod\limits_{i=1}^{n}\sum\limits_{m\in
+M_i}x^m\)</span></strong></p>
+<p>证明：考虑等式右边<span class="math inline">\(\prod\limits_{i=1}^{n}\sum\limits_{m\in
+M_i}x^m\)</span>的展开式中<span class="math inline">\(x^{m_1}x^{m_2}\cdots x^{m_n}=x^{m_1+m_2+\cdots
++m_n}\)</span>项的系数，可以看出<span class="math inline">\(x^k\)</span>前面的系数即为<span class="math inline">\(m_1+m_2+\cdots
++m_n=k\)</span>的解的个数，其中<span class="math inline">\(m_i\in
+M_i\)</span></p>
 <p>这类问题有一个经典的具体问题，如下</p>
-<h4 id="一个例子"><a href="#一个例子" class="headerlink" title="一个例子"></a>一个例子</h4><p>从数量不限的苹果、香蕉、橘子和梨中，选取$n$个水果装成一袋，且选取的苹果数是偶数，香蕉数是5的倍数，橘子至多有4个，梨至多有1个。这样的装法共有多少种？</p>
-<h5 id="解"><a href="#解" class="headerlink" title="解"></a>解</h5><p>就是上述命题的运用，可以看出$M_1={0,2,4,\cdots},M_2={0,5,10,\cdots},M_3={0,1,2,3,4},M_4={0,1}$</p>
-<p>所以可以得到生成函数$f(x)=(1+x^2+x^4+\cdots)(1+x^5+x^{10}+\cdots)(1+x+x^2+x^3+x^4)(1+x)=\frac{1}{(1-x)^2}$,所以所求数列$a_n=(-1)^n{-2 \choose n}={n+2-1 \choose n}={n+1 \choose 1}=n+1$</p>
+<h4 id="一个例子">一个例子</h4>
+<p>从数量不限的苹果、香蕉、橘子和梨中，选取<span class="math inline">\(n\)</span>个水果装成一袋，且选取的苹果数是偶数，香蕉数是5的倍数，橘子至多有4个，梨至多有1个。这样的装法共有多少种？</p>
+<h5 id="解">解</h5>
+<p>就是上述命题的运用，可以看出<span class="math inline">\(M_1=\{0,2,4,\cdots\},M_2=\{0,5,10,\cdots\},M_3=\{0,1,2,3,4\},M_4=\{0,1\}\)</span></p>
+<p>所以可以得到生成函数<span class="math inline">\(f(x)=(1+x^2+x^4+\cdots)(1+x^5+x^{10}+\cdots)(1+x+x^2+x^3+x^4)(1+x)=\frac{1}{(1-x)^2}\)</span>,所以所求数列<span class="math inline">\(a_n=(-1)^n{-2 \choose n}={n+2-1 \choose n}={n+1
+\choose 1}=n+1\)</span></p>
 <p>可以看出这类问题中选取元素的顺序对答案是没有影响的，是一类组合问题</p>
-<h2 id="指数生成函数"><a href="#指数生成函数" class="headerlink" title="指数生成函数"></a>指数生成函数</h2><p>对于普通生成函数，组合数可以得到一个优美简洁的函数，但对于另一个重要的计数数列，排列数，似乎就十分的复杂。所以引入一个指数生成函数，使用指数生成函数，排列数也可以得到一个优美简洁的结果。</p>
-<p>首先给出定义，如下<br>$$<br>f(x)=\sum_{n=0}^{\infty}\frac{a_n}{n!}x^n<br>$$<br>我们考虑$a_k=(n)<em>k=A_n^k$，可以得到它的指数生成函数为$f(x)=\sum\limits</em>{k=0}^n(n)<em>k\frac{x^k}{k!}=\sum\limits</em>{k=0}^n{n \choose k}x^k=(1+x)^n$</p>
+<h2 id="指数生成函数">指数生成函数</h2>
+<p>对于普通生成函数，组合数可以得到一个优美简洁的函数，但对于另一个重要的计数数列，排列数，似乎就十分的复杂。所以引入一个指数生成函数，使用指数生成函数，排列数也可以得到一个优美简洁的结果。</p>
+<p>首先给出定义，如下 <span class="math display">\[
+f(x)=\sum_{n=0}^{\infty}\frac{a_n}{n!}x^n
+\]</span> 我们考虑<span class="math inline">\(a_k=(n)_k=A_n^k\)</span>，可以得到它的指数生成函数为<span class="math inline">\(f(x)=\sum\limits_{k=0}^n(n)_k\frac{x^k}{k!}=\sum\limits_{k=0}^n{n
+\choose k}x^k=(1+x)^n\)</span></p>
 <p>我们发现，结果确实十分优雅。</p>
-<p>至于他为什么叫指数生成函数，我们考虑数列$a_n=1$，可以得到$f(x)=\sum\limits_{n=0}^{\infty}\frac{x^n}{n!}=e^x$，得到的是指数函数，所以被称为指数生成函数。</p>
+<p>至于他为什么叫指数生成函数，我们考虑数列<span class="math inline">\(a_n=1\)</span>，可以得到<span class="math inline">\(f(x)=\sum\limits_{n=0}^{\infty}\frac{x^n}{n!}=e^x\)</span>，得到的是指数函数，所以被称为指数生成函数。</p>
 <p>类似的我们举一个例子来熟悉指数生成函数的计算过程</p>
-<h3 id="一些运算性质-1"><a href="#一些运算性质-1" class="headerlink" title="一些运算性质"></a>一些运算性质</h3><p>我们设$f(x),g(x)$为${a_n},{b_n}$的指数生成函数</p>
-<h4 id="加法-1"><a href="#加法-1" class="headerlink" title="加法"></a>加法</h4><p>显然$f(x)+g(x)$是${a_n+b_n}$的生成函数</p>
-<h4 id="乘法"><a href="#乘法" class="headerlink" title="乘法"></a>乘法</h4><p>$$<br>f(x)g(x)=(\sum_{n=0}^{\infty}a_n\frac{x^n}{n!})(\sum_{n=0}^{\infty}b_n\frac{x^n}{n!})=\sum_{n=0}^{\infty}\frac{x^n}{n!}(\sum_{k=0}^{n}\frac{n!}{k!(n-k)!}a_kb_{n-k})=\sum_{n=0}^{\infty}\frac{x^n}{n!}(\sum_{k=0}^{n}{n \choose k}a_kb_{n-k})<br>$$</p>
-<p>从而$f(x)g(x)$是${\sum\limits_{k=0}^{n}{n \choose k}a_kb_{n-k}}$的生成函数</p>
-<h4 id="数列乘法-1"><a href="#数列乘法-1" class="headerlink" title="数列乘法"></a>数列乘法</h4><p>若$P(x)$为一多项式函数，则${P(n)a_n}$的普通生成函数为$P(xD)f$，其中$xD$为$x\frac{d}{dx}$这个运算</p>
-<p>特殊的${na_n}$的普通生成函数为$xDf$</p>
-<h3 id="Bell数"><a href="#Bell数" class="headerlink" title="Bell数"></a>Bell数</h3><p>首先给出Bell数的递推定义<br>$$<br>B_n=\sum_{k=1}^{n}{n-1 \choose k-1}B_{n-k}\<br>B_0=B_1=1<br>$$<br>所以我们可以定义它的指数生成函数$f(x)=\sum\limits_{n=0}^{\infty}B_n\frac{x^n}{n!}$,得到<br>$$<br>\begin{aligned}<br>f(x)&amp;=\sum_{n=0}^{\infty}B_n\frac{x^n}{n!}=B_0+\sum_{n=1}^{\infty}B_n\frac{x^n}{n!}=B_0+\sum_{n=1}^{\infty}\sum_{k=1}^{n}{n-1 \choose k-1}B_{n-k}\frac{x^n}{n!}\&amp;=B_0+\sum_{n=1}^{\infty}\sum_{k=1}^{n}x^k\frac{B_{n-k}}{n(k-1)!(n-k)!}x^{n-k}=B_0+\sum_{k=1}^{\infty}\frac{x^k}{(k-1)!}\sum_{n=k}^{\infty}\frac{B_{n-k}}{n(n-k)!}x^{n-k}<br>\end{aligned}<br>$$<br>我们发现如果能把分母上的$n$去掉，就可以得到关于$f(x)$的关系式了，如果对原本的式子求导，就可以去掉$n$，所以我们现在考虑对生成函数求导，得到<br>$$<br>\begin{aligned}<br>f‘(x)<br>&amp;=\sum_{n=1}^{\infty}B_n\frac{x^{n-1}}{(n-1)!}<br>=\sum_{n=1}^{\infty}\sum_{k=1}^{n}{n-1 \choose k-1}B_{n-k}\frac{x^{n-1}}{(n-1)!}\<br>&amp;=\sum_{n=1}^{\infty}\sum_{k=1}^{n}x^{k-1}\frac{B_{n-k}}{(k-1)!(n-k)!}x^{n-k}<br>=\sum_{k=1}^{\infty}\frac{x^{k-1}}{(k-1)!}\sum_{n=k}^{\infty}\frac{B_{n-k}}{(n-k)!}x^{n-k}\<br>&amp;=f(x)e^x<br>\end{aligned}<br>$$<br>使用我们常微分方程的知识，可以容易得到$f(x)=ce^{e^x}$，又$f(0)=1$，故$c=\frac{1}{e}$</p>
-<p>所以我们得到<br>$$<br>f(x)=e^{e^x-1}=\frac{1}{e}\sum_{k=0}^{\infty}\frac{(e^x)^k}{k!}=\frac{1}{e}\sum_{k=0}^{\infty}\frac{1}{k!}\sum_{n=0}^{\infty}\frac{(kx)^n}{n!}=\frac{1}{e}\sum_{n=0}^{\infty}(\sum_{k=0}^{\infty}\frac{k^n}{k!})\frac{x^n}{n!}<br>$$<br>所以我们得到$B_n=\frac{1}{e}\sum\limits_{k=0}^{\infty}\frac{k^n}{k!}$</p>
+<h3 id="一些运算性质-1">一些运算性质</h3>
+<p>我们设<span class="math inline">\(f(x),g(x)\)</span>为<span class="math inline">\(\{a_n\},\{b_n\}\)</span>的指数生成函数</p>
+<h4 id="加法-1">加法</h4>
+<p>显然<span class="math inline">\(f(x)+g(x)\)</span>是<span class="math inline">\(\{a_n+b_n\}\)</span>的生成函数</p>
+<h4 id="乘法">乘法</h4>
+<p><span class="math display">\[
+f(x)g(x)=(\sum_{n=0}^{\infty}a_n\frac{x^n}{n!})(\sum_{n=0}^{\infty}b_n\frac{x^n}{n!})=\sum_{n=0}^{\infty}\frac{x^n}{n!}(\sum_{k=0}^{n}\frac{n!}{k!(n-k)!}a_kb_{n-k})=\sum_{n=0}^{\infty}\frac{x^n}{n!}(\sum_{k=0}^{n}{n
+\choose k}a_kb_{n-k})
+\]</span></p>
+<p>从而<span class="math inline">\(f(x)g(x)\)</span>是<span class="math inline">\(\{\sum\limits_{k=0}^{n}{n \choose
+k}a_kb_{n-k}\}\)</span>的生成函数</p>
+<h4 id="数列乘法-1">数列乘法</h4>
+<p>若<span class="math inline">\(P(x)\)</span>为一多项式函数，则<span class="math inline">\({P(n)a_n}\)</span>的普通生成函数为<span class="math inline">\(P(xD)f\)</span>，其中<span class="math inline">\(xD\)</span>为<span class="math inline">\(x\frac{d}{dx}\)</span>这个运算</p>
+<p>特殊的<span class="math inline">\({na_n}\)</span>的普通生成函数为<span class="math inline">\(xDf\)</span></p>
+<h3 id="bell数">Bell数</h3>
+<p>首先给出Bell数的递推定义 <span class="math display">\[
+B_n=\sum_{k=1}^{n}{n-1 \choose k-1}B_{n-k}\\
+B_0=B_1=1
+\]</span> 所以我们可以定义它的指数生成函数<span class="math inline">\(f(x)=\sum\limits_{n=0}^{\infty}B_n\frac{x^n}{n!}\)</span>,得到
+<span class="math display">\[
+\begin{aligned}
+f(x)&amp;=\sum_{n=0}^{\infty}B_n\frac{x^n}{n!}=B_0+\sum_{n=1}^{\infty}B_n\frac{x^n}{n!}=B_0+\sum_{n=1}^{\infty}\sum_{k=1}^{n}{n-1
+\choose
+k-1}B_{n-k}\frac{x^n}{n!}\\&amp;=B_0+\sum_{n=1}^{\infty}\sum_{k=1}^{n}x^k\frac{B_{n-k}}{n(k-1)!(n-k)!}x^{n-k}=B_0+\sum_{k=1}^{\infty}\frac{x^k}{(k-1)!}\sum_{n=k}^{\infty}\frac{B_{n-k}}{n(n-k)!}x^{n-k}
+\end{aligned}
+\]</span> 我们发现如果能把分母上的<span class="math inline">\(n\)</span>去掉，就可以得到关于<span class="math inline">\(f(x)\)</span>的关系式了，如果对原本的式子求导，就可以去掉<span class="math inline">\(n\)</span>，所以我们现在考虑对生成函数求导，得到
+<span class="math display">\[
+\begin{aligned}
+f‘(x)
+&amp;=\sum_{n=1}^{\infty}B_n\frac{x^{n-1}}{(n-1)!}
+=\sum_{n=1}^{\infty}\sum_{k=1}^{n}{n-1 \choose
+k-1}B_{n-k}\frac{x^{n-1}}{(n-1)!}\\
+&amp;=\sum_{n=1}^{\infty}\sum_{k=1}^{n}x^{k-1}\frac{B_{n-k}}{(k-1)!(n-k)!}x^{n-k}
+=\sum_{k=1}^{\infty}\frac{x^{k-1}}{(k-1)!}\sum_{n=k}^{\infty}\frac{B_{n-k}}{(n-k)!}x^{n-k}\\
+&amp;=f(x)e^x
+\end{aligned}
+\]</span> 使用我们常微分方程的知识，可以容易得到<span class="math inline">\(f(x)=ce^{e^x}\)</span>，又<span class="math inline">\(f(0)=1\)</span>，故<span class="math inline">\(c=\frac{1}{e}\)</span></p>
+<p>所以我们得到 <span class="math display">\[
+f(x)=e^{e^x-1}=\frac{1}{e}\sum_{k=0}^{\infty}\frac{(e^x)^k}{k!}=\frac{1}{e}\sum_{k=0}^{\infty}\frac{1}{k!}\sum_{n=0}^{\infty}\frac{(kx)^n}{n!}=\frac{1}{e}\sum_{n=0}^{\infty}(\sum_{k=0}^{\infty}\frac{k^n}{k!})\frac{x^n}{n!}
+\]</span> 所以我们得到<span class="math inline">\(B_n=\frac{1}{e}\sum\limits_{k=0}^{\infty}\frac{k^n}{k!}\)</span></p>
 <p>在这个例子中，我们可以发现使用指数生成函数求解数列的一般步骤和普通生成函数并没有什么太大的差别。但对于含有组合数的求和类的递推关系，我们更倾向于使用指数生成函数，因为可以去掉组合数的分子，并且得到另外一些指数生成函数形式的无穷级数。</p>
 <p>正如前面提到的，排列数的指数生成函数非常简洁优美，所以指数生成函数与<strong>排列</strong>类计数问题有密不可分的联系。与普通生成函数类似，我们给出另一个类似的经典的排列类计数问题。</p>
-<h3 id="典中典2"><a href="#典中典2" class="headerlink" title="典中典2"></a>典中典2</h3><p>给出另一个命题：</p>
-<p><strong>从$n$元集$S={S_1,S_2,\cdots,S_n}$中选取$k$个元的排列数为$a_k$，其中要求$S_i$出现的次数集为$M_i$，则${a_k}$的指数生成函数$\sum\limits_{k=0}^{\infty}a_k\frac{x^k}{k!}=\prod\limits_{i=1}^{n}(\sum\limits_{m\in M_i}\frac{x^m}{m!})$</strong></p>
-<p>证明：对数列单独考虑，考虑$m_1+m_2+\cdots+m_n=k,S_i$恰取$m_i$的排列数为$\frac{k!}{m_1!m_2!\cdots m_n!}$</p>
-<p>而等式右边$x^k$的系数为$\sum\limits_{\begin{aligned}m_1+m_2+&amp;\cdots+m_n=k\m_i\in &amp;M_i\end{aligned}}\frac{1}{m_1!m_2!\cdots m_n!}$，也就意味着$\sum\limits_{\begin{aligned}m_1+m_2+&amp;\cdots+m_n=k\m_i\in &amp;M_i\end{aligned}}\frac{k!}{m_1!m_2!\cdots m_n!}$为$\frac{x^k}{k!}$前的系数</p>
-<h4 id="一个例子-1"><a href="#一个例子-1" class="headerlink" title="一个例子"></a>一个例子</h4><p>有1,2,3,4​能组成多少个五位数？要求这些五位数中1出现2次或3次，2至多出现1次，4出现偶数次</p>
-<h4 id="解-1"><a href="#解-1" class="headerlink" title="解"></a>解</h4><p>为了方便考虑，我们暂时不考虑具体的$n$，转而考虑求得一般的$n$的生成函数。</p>
-<p>可以看出来，在本问题中，$M_1={2,3},M_2={0,1},M_3={0,1,2,\cdots},M_4={0,2,4,\cdots}$</p>
-<p>所以我们得到生成函数<br>$$<br>\begin{aligned}<br>f(x)<br>&amp;=\sum_{n=0}^{\infty}a_n\frac{x^n}{n!}<br>=(\frac{x^2}{2!}+\frac{x^3}{3!})(1+x)(1+x+\frac{x^2}{2!}+\cdots)(1+\frac{x^2}{2!}+\cdots)<br>=(\frac{x^2}{2}+\frac{x^3}{6})(1+x)e^x\frac{e^x+e^{-x}}{2}\<br>&amp;=\frac{1}{2}(\frac{x^2}{2}+\frac{x^3}{6})(1+x)(e^{2x}+1)=\frac{1}{12}x^2(3+4x+x^2)(\sum_{n=0}^{\infty}\frac{(2x)^n}{n!}+1)<br>\end{aligned}<br>$$<br>从而我们得到$a_5=\frac{5!}{12}(3\times\frac{2^3}{3!}+4\times\frac{2^2}{2!}+1\times\frac{2^1}{1})=140$</p>
+<h3 id="典中典2">典中典2</h3>
+<p>给出另一个命题：</p>
+<p><strong>从<span class="math inline">\(n\)</span>元集<span class="math inline">\(S=\{S_1,S_2,\cdots,S_n\}\)</span>中选取<span class="math inline">\(k\)</span>个元的排列数为<span class="math inline">\(a_k\)</span>，其中要求<span class="math inline">\(S_i\)</span>出现的次数集为<span class="math inline">\(M_i\)</span>，则<span class="math inline">\(\{a_k\}\)</span>的指数生成函数<span class="math inline">\(\sum\limits_{k=0}^{\infty}a_k\frac{x^k}{k!}=\prod\limits_{i=1}^{n}(\sum\limits_{m\in
+M_i}\frac{x^m}{m!})\)</span></strong></p>
+<p>证明：对数列单独考虑，考虑<span class="math inline">\(m_1+m_2+\cdots+m_n=k,S_i\)</span>恰取<span class="math inline">\(m_i\)</span>的排列数为<span class="math inline">\(\frac{k!}{m_1!m_2!\cdots m_n!}\)</span></p>
+<p>而等式右边<span class="math inline">\(x^k\)</span>的系数为<span class="math inline">\(\sum\limits_{\begin{aligned}m_1+m_2+&amp;\cdots+m_n=k\\m_i\in
+&amp;M_i\end{aligned}}\frac{1}{m_1!m_2!\cdots
+m_n!}\)</span>，也就意味着<span class="math inline">\(\sum\limits_{\begin{aligned}m_1+m_2+&amp;\cdots+m_n=k\\m_i\in
+&amp;M_i\end{aligned}}\frac{k!}{m_1!m_2!\cdots m_n!}\)</span>为<span class="math inline">\(\frac{x^k}{k!}\)</span>前的系数</p>
+<h4 id="一个例子-1">一个例子</h4>
+<p>有1,2,3,4​能组成多少个五位数？要求这些五位数中1出现2次或3次，2至多出现1次，4出现偶数次</p>
+<h4 id="解-1">解</h4>
+<p>为了方便考虑，我们暂时不考虑具体的<span class="math inline">\(n\)</span>，转而考虑求得一般的<span class="math inline">\(n\)</span>的生成函数。</p>
+<p>可以看出来，在本问题中，<span class="math inline">\(M_1=\{2,3\},M_2=\{0,1\},M_3=\{0,1,2,\cdots\},M_4=\{0,2,4,\cdots\}\)</span></p>
+<p>所以我们得到生成函数 <span class="math display">\[
+\begin{aligned}
+f(x)
+&amp;=\sum_{n=0}^{\infty}a_n\frac{x^n}{n!}
+=(\frac{x^2}{2!}+\frac{x^3}{3!})(1+x)(1+x+\frac{x^2}{2!}+\cdots)(1+\frac{x^2}{2!}+\cdots)
+=(\frac{x^2}{2}+\frac{x^3}{6})(1+x)e^x\frac{e^x+e^{-x}}{2}\\
+&amp;=\frac{1}{2}(\frac{x^2}{2}+\frac{x^3}{6})(1+x)(e^{2x}+1)=\frac{1}{12}x^2(3+4x+x^2)(\sum_{n=0}^{\infty}\frac{(2x)^n}{n!}+1)
+\end{aligned}
+\]</span> 从而我们得到<span class="math inline">\(a_5=\frac{5!}{12}(3\times\frac{2^3}{3!}+4\times\frac{2^2}{2!}+1\times\frac{2^1}{1})=140\)</span></p>
 <p>容易看出上述问题是一类排列问题</p>
-<h2 id="狄利克雷生成函数"><a href="#狄利克雷生成函数" class="headerlink" title="狄利克雷生成函数"></a>狄利克雷生成函数</h2><p>除了普通生成函数和指数生成函数，还有一类狄利克雷生成函数。在数论中是十分重要的工具。</p>
-<p>先给出狄利克雷卷积的定义，如下<br>$$<br>f(s)=\sum_{n=1}^{\infty}\frac{a_n}{n^s}<br>$$<br>对于数列${1}$，它的狄利克雷生成函数就是著名的Riemann-Zeta函数$\zeta(s)\triangleq\sum\limits_{n=1}^{\infty}\frac{1}{n^s}$</p>
-<h3 id="一些运算性质-2"><a href="#一些运算性质-2" class="headerlink" title="一些运算性质"></a>一些运算性质</h3><p>我们设$f(s),g(s)$为${a_n},{b_n}$的狄利克雷生成函数</p>
-<h4 id="乘法（Dirichlet卷积）"><a href="#乘法（Dirichlet卷积）" class="headerlink" title="乘法（Dirichlet卷积）"></a>乘法（Dirichlet卷积）</h4><p>$$<br>f(s)g(s)=(\sum_{n=1}^{\infty}\frac{a_n}{n^s})(\sum_{n=1}^{\infty}\frac{b_n}{n^s})=\sum_{n=1}^{\infty}\frac{1}{n^s}(\sum_{d|n}a_nb_{\frac{n}{d}})<br>$$</p>
-<p>从而$f(s)g(s)$是${\sum\limits_{d|n}a_db_{\frac{n}{d}}}$的生成函数</p>
-<h5 id="方幂"><a href="#方幂" class="headerlink" title="方幂"></a>方幂</h5><p>$f^k(s)$是数列<br>$$<br>\lbrace\sum_{n_1n_2\cdots n_k=n}a_{n_1}a_{n_2}\cdots a_{n_k}\rbrace<br>$$<br>的狄利克雷生成函数</p>
+<h2 id="狄利克雷生成函数">狄利克雷生成函数</h2>
+<p>除了普通生成函数和指数生成函数，还有一类狄利克雷生成函数。在数论中是十分重要的工具。</p>
+<p>先给出狄利克雷卷积的定义，如下 <span class="math display">\[
+f(s)=\sum_{n=1}^{\infty}\frac{a_n}{n^s}
+\]</span> 对于数列<span class="math inline">\(\{1\}\)</span>，它的狄利克雷生成函数就是著名的Riemann-Zeta函数<span class="math inline">\(\zeta(s)\triangleq\sum\limits_{n=1}^{\infty}\frac{1}{n^s}\)</span></p>
+<h3 id="一些运算性质-2">一些运算性质</h3>
+<p>我们设<span class="math inline">\(f(s),g(s)\)</span>为<span class="math inline">\(\{a_n\},\{b_n\}\)</span>的狄利克雷生成函数</p>
+<h4 id="乘法dirichlet卷积">乘法（Dirichlet卷积）</h4>
+<p><span class="math display">\[
+f(s)g(s)=(\sum_{n=1}^{\infty}\frac{a_n}{n^s})(\sum_{n=1}^{\infty}\frac{b_n}{n^s})=\sum_{n=1}^{\infty}\frac{1}{n^s}(\sum_{d|n}a_nb_{\frac{n}{d}})
+\]</span></p>
+<p>从而<span class="math inline">\(f(s)g(s)\)</span>是<span class="math inline">\({\sum\limits_{d|n}a_db_{\frac{n}{d}}}\)</span>的生成函数</p>
+<h5 id="方幂">方幂</h5>
+<p><span class="math inline">\(f^k(s)\)</span>是数列 <span class="math display">\[
+\lbrace\sum_{n_1n_2\cdots n_k=n}a_{n_1}a_{n_2}\cdots a_{n_k}\rbrace
+\]</span> 的狄利克雷生成函数</p>
 <p>由乘法性质容易推出</p>
-<h3 id="积性函数的狄利克雷生成函数"><a href="#积性函数的狄利克雷生成函数" class="headerlink" title="积性函数的狄利克雷生成函数"></a>积性函数的狄利克雷生成函数</h3><p>若$f$为积性函数，则${f(n)}$的狄利克雷生成函数有如下形式（$p$表示所有质数）<br>$$<br>\sum_{n=1}^{\infty}\frac{f(n)}{n^s}=\prod_{p}(\sum_{k=0}^{\infty}f(p^k)p^{-ks})<br>$$<br>证明：</p>
-<p>考虑$n$的质因数分解$n=\prod\limits_{i=1}^rp_i^{a_i}$，则$\prod_{p}(\sum_{k=0}^{\infty}f(p^k)p^{-ks})$中与$f(n)$有关的项为<br>$$<br>\prod_{i=1}^{r}f(p_i^{a_i})p_i^{-a_is}=\frac{\prod_{i=1}^{r}f(p_i^{a_i})}{\prod_{i=1}^{r}p_i^{a_is}}=\frac{\prod_{i=1}^{r}f(p_i^{a_i})}{(\prod_{i=1}^{r}p_i^{a_i})^s}=\frac{\prod_{i=1}^{r}f(p_i^{a_i})}{n^s}<br>$$<br>故${f(n)}$的狄利克雷生成函数中$\frac{1}{n^s}$的系数为$\prod_{i=1}^{r}f(p_i^{a_i})=f(\prod_{i=1}^{r}p_i^{a_i})=f(n)$</p>
-<h3 id="典中典3"><a href="#典中典3" class="headerlink" title="典中典3"></a>典中典3</h3><p>给出一个命题，与普通生成函数和指数生成函数的颇为相似</p>
-<p>$\zeta^k(s)$生成了$n$的所有可分解为$k$个有序正因子积的方法，而$(\zeta(s)-1)^k$生成了$n$的可分解为$k$个有序非平凡正因子（每个都大于1）积的方法数</p>
-<h3 id="Mobius反演的另一个证明"><a href="#Mobius反演的另一个证明" class="headerlink" title="Mobius反演的另一个证明"></a>Mobius反演的另一个证明</h3><p>使用狄利克雷生成函数可以非常巧妙的证明Mobius反演，即</p>
-<p>若$a_n=\sum\limits_{d|n}b_d$,则$b_n=\sum\limits_{d|n}\mu(\frac{n}{d})a_d$</p>
-<p>先求Mobius函数$\mu(n)$的狄利克雷生成函数$\tilde{\mu}$：<br>$$<br>\sum_{n=1}^{\infty}\frac{\mu(n)}{n^s}=\prod_p(1-p^{-s})<br>$$<br>又<br>$$<br>\zeta(s)=\sum_{n=1}^{\infty}\frac{1}{n^s}=\prod_p(\sum_{k=0}^{\infty}p^{-ks})=\prod_p\frac{1}{1-p^{-s}}<br>$$<br>从而$\tilde{\mu}\cdot\zeta=1$</p>
-<p>证明：设${a_n},{b_n}$的狄利克雷生成函数为$A(s),B(s)$</p>
-<p>则由上述乘法的性质，得到$A=B\cdot\zeta$,从而$B=A\cdot\tilde{\mu}$,所以再由乘法的性质$b_n=\sum\limits_{d|n}\mu(\frac{n}{d})a_d$</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>普通生成函数和指数生成函数可以用于求解很多计数问题，尤其是递推关系的求解；而狄利克雷生成函数在数论方向有极大的用处。</p>
+<h3 id="积性函数的狄利克雷生成函数">积性函数的狄利克雷生成函数</h3>
+<p>若<span class="math inline">\(f\)</span>为积性函数，则<span class="math inline">\(\{f(n)\}\)</span>的狄利克雷生成函数有如下形式（<span class="math inline">\(p\)</span>表示所有质数） <span class="math display">\[
+\sum_{n=1}^{\infty}\frac{f(n)}{n^s}=\prod_{p}(\sum_{k=0}^{\infty}f(p^k)p^{-ks})
+\]</span> 证明：</p>
+<p>考虑<span class="math inline">\(n\)</span>的质因数分解<span class="math inline">\(n=\prod\limits_{i=1}^rp_i^{a_i}\)</span>，则<span class="math inline">\(\prod_{p}(\sum_{k=0}^{\infty}f(p^k)p^{-ks})\)</span>中与<span class="math inline">\(f(n)\)</span>有关的项为 <span class="math display">\[
+\prod_{i=1}^{r}f(p_i^{a_i})p_i^{-a_is}=\frac{\prod_{i=1}^{r}f(p_i^{a_i})}{\prod_{i=1}^{r}p_i^{a_is}}=\frac{\prod_{i=1}^{r}f(p_i^{a_i})}{(\prod_{i=1}^{r}p_i^{a_i})^s}=\frac{\prod_{i=1}^{r}f(p_i^{a_i})}{n^s}
+\]</span> 故<span class="math inline">\(\{f(n)\}\)</span>的狄利克雷生成函数中<span class="math inline">\(\frac{1}{n^s}\)</span>的系数为<span class="math inline">\(\prod_{i=1}^{r}f(p_i^{a_i})=f(\prod_{i=1}^{r}p_i^{a_i})=f(n)\)</span></p>
+<h3 id="典中典3">典中典3</h3>
+<p>给出一个命题，与普通生成函数和指数生成函数的颇为相似</p>
+<p><span class="math inline">\(\zeta^k(s)\)</span>生成了<span class="math inline">\(n\)</span>的所有可分解为<span class="math inline">\(k\)</span>个有序正因子积的方法，而<span class="math inline">\((\zeta(s)-1)^k\)</span>生成了<span class="math inline">\(n\)</span>的可分解为<span class="math inline">\(k\)</span>个有序非平凡正因子（每个都大于1）积的方法数</p>
+<h3 id="mobius反演的另一个证明">Mobius反演的另一个证明</h3>
+<p>使用狄利克雷生成函数可以非常巧妙的证明Mobius反演，即</p>
+<p>若<span class="math inline">\(a_n=\sum\limits_{d|n}b_d\)</span>,则<span class="math inline">\(b_n=\sum\limits_{d|n}\mu(\frac{n}{d})a_d\)</span></p>
+<p>先求Mobius函数<span class="math inline">\(\mu(n)\)</span>的狄利克雷生成函数<span class="math inline">\(\tilde{\mu}\)</span>： <span class="math display">\[
+\sum_{n=1}^{\infty}\frac{\mu(n)}{n^s}=\prod_p(1-p^{-s})
+\]</span> 又 <span class="math display">\[
+\zeta(s)=\sum_{n=1}^{\infty}\frac{1}{n^s}=\prod_p(\sum_{k=0}^{\infty}p^{-ks})=\prod_p\frac{1}{1-p^{-s}}
+\]</span> 从而<span class="math inline">\(\tilde{\mu}\cdot\zeta=1\)</span></p>
+<p>证明：设<span class="math inline">\(\{a_n\},\{b_n\}\)</span>的狄利克雷生成函数为<span class="math inline">\(A(s),B(s)\)</span></p>
+<p>则由上述乘法的性质，得到<span class="math inline">\(A=B\cdot\zeta\)</span>,从而<span class="math inline">\(B=A\cdot\tilde{\mu}\)</span>,所以再由乘法的性质<span class="math inline">\(b_n=\sum\limits_{d|n}\mu(\frac{n}{d})a_d\)</span></p>
+<h2 id="总结">总结</h2>
+<p>普通生成函数和指数生成函数可以用于求解很多计数问题，尤其是递推关系的求解；而狄利克雷生成函数在数论方向有极大的用处。</p>
 <p>下一篇博客计划写Polya计数原理，从而更好的解决各种计数问题。</p>
 
             </div>
@@ -369,9 +483,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2050/10/17/%E9%A3%9F%E7%94%A8%E8%AF%B4%E6%98%8E/">
+                      <a href="/2025/09/22/DDPM/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">食用说明</span>
+                        <span class="hidden-mobile">DDPM</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
